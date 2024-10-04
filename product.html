@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <style>
+    body{
+      background-color: rgb(224, 215, 215);
+    }
+    header{
+  background-color: #222012;
+  padding:15px;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+ }
+ a{
+  color:white;
+  text-decoration: none;
+  padding:10px;
+  font-size: 20px;
+  font-weight: bold;
+ }
+ a:hover{
+  text-decoration: underline;
+ }
+    .product{
+      display:flex;
+      align-items: center;
+     flex-direction: column;
+     
+    }
+    .one, .two, .three{
+      display: flex;
+      justify-content: center;
+      gap:10px;
+      margin: 10px 0;
+    }
+    img{
+      width:150px;
+      height:auto;
+      
+    }
+    .pics{
+      background-color: white;
+      margin:20px;
+      padding:20px;
+      width:200px
+    }
+    .pics p{
+      font-weight: bold;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+    .pics button{
+      padding:15px;
+      text-align: center;
+      color:black;
+      font-size: 20px;
+    }
+    .pics button:hover{
+      background-color: darkslateblue;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>TIMELESS TECH</h1>
+    <nav>
+      <input type="text">
+      <button><i class='bx bx-search'></i></button>
+      <a href="home.html">Home</a>
+      <a href="product.html">Product</a>
+      <a href="about.html">About us</a>
+      <a href="contact.html">Contact us</a>
+    </nav>
+  </header>
+  <div class="products">
+<div class="one">
+  <div  class="pics">
+<img src="laptop1.webp">
+<p>Lenovo IdeaPad Celeron 8GB 256GB SSD 14" Win...</p>
+<p>KES 39000</p>
+<button>Add to basket</button>
+  </div>
+  <div class="pics">
+<img src="laptop2.webp" >
+<p>Asus X515EA i7-1165G7, 8GB, 512GB SSD, 15.6" FHD,...</p>
+<p>KES 100,999</p>
+<button>Add to basket</button>
+</div>
+<div class="pics">
+<img src="laptop3.webp" >
+<p>Lenovo LOQ 3Gaming Series i5 8GB 512GB...</p>
+<p>KES 149,500 <b style="text-decoration: line-through; color:grey">KES 157,500</b></p>
+<button style="margin-top: 20px;">Add to basket</button>
+</div>
+</div>
+
+<div class="two">
+  <div class="pics">
+    <img src="set.jpg" >
+    <p>HP Pro Tower 290 G9 Desktop PC,INTEL ...</p>
+    <p>KES 82,000</p>
+    <button style="margin-top:80px;">Add to basket</button>
+  </div>
+  <div class="pics">
+    <img src="cpu1.jpg" >
+    <p>HP ZR22w 21.5-inch S-IPS LCD Monitor</p>
+    <p>KES 5,499</p>
+    <button style="margin-top: 80px;">Add to basket</button>
+  </div>
+  <div class="pics">
+    <img src="cpu.webp" >
+    <p>HP 290 G4 Core i7 Desktop MT 10Th Gen 8GB RAM 1TB HDD</p>
+    <p>KES 88,OOO</p>
+    <button>Add to basket</button>
+  </div>
+ 
+
+</div>
+<div class="three">
+  <div class="pics">
+    <img src="gpu1.jpg">
+    <p>Nvidia Graphics cards</p>
+    <p>Palit GeForce RTX 3070 Ti GamingPro</p>
+    <p>KES 125,000</p>
+    <button>Add to basket</button>
+  </div>
+  <div class="pics">
+    <img src="gpu2.jpg">
+    <p>Nvidia Graphics cards</p>
+    <p>Palit GeForce RTX 3060 Ti Dual OC 8GB</p>
+    <p>KES 120,000</p>
+    <button>Add to basket</button>
+  </div>
+  <div class="pics">
+    <img src="gpu3.jpg" style:>
+    <p>Nvidia Graphics cards</p>
+    <p>INNO3D Nvidia GeForce GT210 1GB 64bit DDR3</p>
+    <p>KES 4,000</p>
+    <button>Add to basket</button>
+  </div>
+  </div>
+</div>
+    
+  
+
+  
+</body>
+</html>
