@@ -1,154 +1,363 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-  <style>
-    body{
-      background-color: rgb(224, 215, 215);
-    }
-    header{
-  background-color: #222012;
-  padding:15px;
-  color: white;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 
- }
- a{
-  color:white;
-  text-decoration: none;
-  padding:10px;
-  font-size: 20px;
-  font-weight: bold;
- }
- a:hover{
-  text-decoration: underline;
- }
-    .product{
-      display:flex;
-      align-items: center;
-     flex-direction: column;
-     
-    }
-    .one, .two, .three{
-      display: flex;
-      justify-content: center;
-      gap:10px;
-      margin: 10px 0;
-    }
-    img{
-      width:150px;
-      height:auto;
-      
-    }
-    .pics{
-      background-color: white;
-      margin:20px;
-      padding:20px;
-      width:200px
-    }
-    .pics p{
-      font-weight: bold;
-      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    }
-    .pics button{
-      padding:15px;
-      text-align: center;
-      color:black;
-      font-size: 20px;
-    }
-    .pics button:hover{
-      background-color: darkslateblue;
-    }
-  </style>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        body {
+            background-color: rgb(224, 215, 215);
+        }
+
+        header {
+            background-color: #222012;
+            padding: 15px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        a {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .product {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .one,
+        .two,
+        .three {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 10px 0;
+        }
+
+        img {
+            width: 150px;
+            height: auto;
+        }
+
+        .pics {
+            background-color: white;
+            margin: 20px;
+            padding: 20px;
+            width: 200px;
+        }
+
+        .pics p {
+            font-weight: bold;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        .pics button {
+            padding: 15px;
+            text-align: center;
+            color: black;
+            font-size: 20px;
+        }
+
+        .pics button:hover {
+            background-color: darkslateblue;
+        }
+
+        .cart-container {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 350px;
+            background-color: white;
+            height: 100%;
+            box-shadow: -4px 0 8px rgba(0, 0, 0, 0.2);
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+            z-index: 100;
+            overflow-y: auto;
+        }
+
+        .cart-header {
+            padding: 20px;
+            background-color: #333;
+            color: white;
+            text-align: center;
+            font-size: 20px;
+        }
+
+        .cart-content {
+            padding: 20px;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .cart-item img {
+            width: 50px;
+            height: 50px;
+        }
+
+        .cart-item .remove-item {
+            color: red;
+            cursor: pointer;
+        }
+
+        .cart-icon {
+            font-size: 20px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .cart-icon .cart-count {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background-color: red;
+            color: white;
+            border-radius: 50%;
+            padding: 5px;
+            font-size: 12px;
+        }
+
+        .show-cart {
+            transform: translateX(0);
+        }
+
+        .filter-sort {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+        }
+
+        .filter-sort select {
+            padding: 10px;
+            font-size: 16px;
+        }
+    </style>
 </head>
+
 <body>
   <header>
-    <h1>TIMELESS TECH</h1>
-    <nav>
-      <input type="text">
-      <button><i class='bx bx-search'></i></button>
-      <a href="home.html">Home</a>
-      <a href="product.html">Product</a>
-      <a href="about.html">About us</a>
-      <a href="contact.html">Contact us</a>
-    </nav>
+      <h1>TIMELESS TECH</h1>
+      <nav>
+          <input type="text" id="search" placeholder="Search products...">
+          <button><i class='bx bx-search'></i></button>
+          <a href="home.html">Home</a>
+          <a href="product.html">Product</a>
+          <a href="about.html">About us</a>
+          <a href="contact.html">Contact us</a>
+          <span class="cart-icon" onclick="toggleCart()">
+              <i class="fa-solid fa-cart-shopping"></i>
+              <span class="cart-count">0</span>
+          </span>
+      </nav>
   </header>
+
+  <div class="filter-sort">
+      <select id="filter">
+          <option value="">All Products</option>
+          <option value="laptop">Laptops</option>
+          <option value="desktop">Desktops</option>
+          <option value="gpu">Graphics Cards</option>
+          <!-- Add more filter options as needed -->
+      </select>
+      <select id="sort">
+          <option value="">Sort By</option>
+          <option value="priceLowToHigh">Price: Low to High</option>
+          <option value="priceHighToLow">Price: High to Low</option>
+      </select>
+  </div>
+
   <div class="products">
-<div class="one">
-  <div  class="pics">
-<img src="laptop1.webp">
-<p>Lenovo IdeaPad Celeron 8GB 256GB SSD 14" Win...</p>
-<p>KES 39000</p>
-<button>Add to basket</button>
-  </div>
-  <div class="pics">
-<img src="laptop2.webp" >
-<p>Asus X515EA i7-1165G7, 8GB, 512GB SSD, 15.6" FHD,...</p>
-<p>KES 100,999</p>
-<button>Add to basket</button>
-</div>
-<div class="pics">
-<img src="laptop3.webp" >
-<p>Lenovo LOQ 3Gaming Series i5 8GB 512GB...</p>
-<p>KES 149,500 <b style="text-decoration: line-through; color:grey">KES 157,500</b></p>
-<button style="margin-top: 20px;">Add to basket</button>
-</div>
-</div>
+      <div class="one">
+          <div class="pics" data-category="laptop">
+              <img src="laptop1.webp">
+              <p>Lenovo IdeaPad Celeron 8GB 256GB SSD 14" Win...</p>
+              <p>KES 39,000</p>
+              <button onclick="addToCart('laptop1', 'Lenovo IdeaPad', 'KES 39,000')">Add to cart</button>
+          </div>
+          <div class="pics" data-category="laptop">
+              <img src="laptop2.webp">
+              <p>Asus X515EA i7-1165G7, 8GB, 512GB SSD, 15.6" FHD,...</p>
+              <p>KES 100,999</p>
+              <button onclick="addToCart('laptop2', 'Asus X515EA', 'KES 100,999')">Add to cart</button>
+          </div>
+          <div class="pics" data-category="laptop">
+              <img src="laptop3.webp">
+              <p>Lenovo LOQ 3Gaming Series i5 8GB 512GB...</p>
+              <p>KES 149,500 <b style="text-decoration: line-through; color: grey">KES 157,500</b></p>
+              <button style="margin-top: 20px;" onclick="addToCart('laptop3', 'Lenovo LOQ 3Gaming Series i5 8GB 512GB...', 'KES 149,500')">Add to Cart</button>
+          </div>
+      </div>
 
-<div class="two">
-  <div class="pics">
-    <img src="set.jpg" >
-    <p>HP Pro Tower 290 G9 Desktop PC,INTEL ...</p>
-    <p>KES 82,000</p>
-    <button style="margin-top:80px;">Add to basket</button>
-  </div>
-  <div class="pics">
-    <img src="cpu1.jpg" >
-    <p>HP ZR22w 21.5-inch S-IPS LCD Monitor</p>
-    <p>KES 5,499</p>
-    <button style="margin-top: 80px;">Add to basket</button>
-  </div>
-  <div class="pics">
-    <img src="cpu.webp" >
-    <p>HP 290 G4 Core i7 Desktop MT 10Th Gen 8GB RAM 1TB HDD</p>
-    <p>KES 88,OOO</p>
-    <button>Add to basket</button>
-  </div>
- 
+      <div class="two">
+          <div class="pics" data-category="desktop">
+              <img src="set.jpg">
+              <p>HP Pro Tower 290 G9 Desktop PC,INTEL ...</p>
+              <p>KES 82,000</p>
+              <button style="margin-top: 80px;" onclick="addToCart('set', 'HP Pro Tower 290 G9 Desktop PC,INTEL ...', 'KES 82,000')">Add to cart</button>
+          </div>
+          <div class="pics" data-category="desktop">
+              <img src="cpu1.jpg">
+              <p>HP ZR22w 21.5-inch S-IPS LCD Monitor</p>
+              <p>KES 5,499</p>
+              <button style="margin-top: 80px;" onclick="addToCart('cpu1', 'HP ZR22w 21.5-inch S-IPS LCD Monitor', 'KES 5,499')">Add to cart</button>
+          </div>
+          <div class="pics" data-category="desktop">
+              <img src="cpu.webp">
+              <p>HP 290 G4 Core i7 Desktop MT 10Th Gen 8GB RAM 1TB HDD</p>
+              <p>KES 88,000</p>
+              <button onclick="addToCart('cpu', 'HP 290 G4 Core i7 Desktop MT 10Th Gen 8GB RAM 1TB HDD', 'KES 88,000')">Add to cart</button>
+          </div>
+      </div>
 
-</div>
-<div class="three">
-  <div class="pics">
-    <img src="gpu1.jpg">
-    <p>Nvidia Graphics cards</p>
-    <p>Palit GeForce RTX 3070 Ti GamingPro</p>
-    <p>KES 125,000</p>
-    <button>Add to basket</button>
+      <div class="three">
+          <div class="pics" data-category="gpu">
+              <img src="gpu1.jpg">
+              <p>Nvidia Graphics cards</p>
+              <p>Palit GeForce RTX 3070 Ti GamingPro</p>
+              <p>KES 125,000</p>
+              <button onclick="addToCart('gpu1', 'Palit GeForce RTX 3070 Ti GamingPro', 'KES 125,000')">Add to cart</button>
+          </div>
+          <div class="pics" data-category="gpu">
+              <img src="gpu2.jpg">
+              <p>Nvidia Graphics cards</p>
+              <p>Palit GeForce RTX 3060 Ti Dual OC 8GB</p>
+              <p>KES 120,000</p>
+              <button onclick="addToCart('gpu2', 'Palit GeForce RTX 3060 Ti Dual OC 8GB', 'KES 120,000')">Add to cart</button>
+          </div>
+          <div class="pics" data-category="gpu">
+              <img src="gpu3.jpg">
+              <p>Nvidia Graphics cards</p>
+              <p>INNO3D Nvidia GeForce GT210 1GB 64bit DDR3</p>
+              <p>KES 4,000</p>
+              <button onclick="addToCart('gpu3', 'INNO3D Nvidia GeForce GT210 1GB 64bit DDR3', 'KES 4,000')">Add to cart</button>
+          </div>
+      </div>
   </div>
-  <div class="pics">
-    <img src="gpu2.jpg">
-    <p>Nvidia Graphics cards</p>
-    <p>Palit GeForce RTX 3060 Ti Dual OC 8GB</p>
-    <p>KES 120,000</p>
-    <button>Add to basket</button>
-  </div>
-  <div class="pics">
-    <img src="gpu3.jpg" style:>
-    <p>Nvidia Graphics cards</p>
-    <p>INNO3D Nvidia GeForce GT210 1GB 64bit DDR3</p>
-    <p>KES 4,000</p>
-    <button>Add to basket</button>
-  </div>
-  </div>
-</div>
-    
-  
 
-  
+  <div class="cart-container" id="cartContainer">
+      <div class="cart-header">
+          <h2>Your Cart</h2>
+          <span class="close-cart" onclick="toggleCart()">✖</span>
+      </div>
+      <div class="cart-content" id="cartContent">
+          <!-- Cart items will be dynamically added here -->
+      </div>
+      <div class="cart-footer">
+          <p>Total: <span id="totalPrice">KES 0</span></p>
+      </div>
+  </div>
+
+  <script>
+      let cart = [];
+      const cartCount = document.querySelector('.cart-count');
+      const cartContent = document.getElementById('cartContent');
+      const cartContainer = document.getElementById('cartContainer');
+      const totalPrice = document.getElementById('totalPrice');
+      const searchInput = document.getElementById('search');
+      const filter = document.getElementById('filter');
+      const sort = document.getElementById('sort');
+
+      function addToCart(id, name, price) {
+          // Remove 'KES' and commas, then store the cleaned price
+          const cleanPrice = price.replace('KES', '').replace(/,/g, '').trim();
+          const item = { id, name, price: parseFloat(cleanPrice) };
+          cart.push(item);
+          updateCart(cart);
+      }
+
+      function updateCart(cartItems) {
+          cartContent.innerHTML = ''; // Clear the cart display
+          let total = 0; // Initialize total price
+
+          cartItems.forEach((item, index) => {
+              cartContent.innerHTML += `
+                  <div class="cart-item">
+                      <p>${item.name} - KES ${item.price.toLocaleString()}</p>
+                      <i class="fa-solid fa-trash remove-item" onclick="removeFromCart(${index})"></i>
+                  </div>`;
+              total += item.price;
+          });
+
+          cartCount.innerText = cartItems.length; // Update cart count
+          totalPrice.innerText = `KES ${total.toLocaleString()}`; // Format and update total price
+      }
+
+      function removeFromCart(index) {
+          cart.splice(index, 1); // Remove item from cart array
+          updateCart(cart); // Update cart display
+      }
+
+      function toggleCart() {
+          cartContainer.classList.toggle('show-cart');
+      }
+
+      // Filter functionality
+      filter.addEventListener('change', function () {
+          const value = this.value;
+          const products = document.querySelectorAll('.pics');
+          products.forEach(product => {
+              if (value === "" || product.getAttribute('data-category') === value) {
+                  product.style.display = "block"; // Show product
+              } else {
+                  product.style.display = "none"; // Hide product
+              }
+          });
+      });
+
+      // Sort functionality
+      sort.addEventListener('change', function () {
+          const value = this.value;
+          const productsArray = Array.from(document.querySelectorAll('.pics'));
+          if (value === 'priceLowToHigh') {
+              productsArray.sort((a, b) => {
+                  const priceA = parseFloat(a.querySelector('p:nth-of-type(2)').innerText.replace('KES', '').replace(/,/g, '').trim());
+                  const priceB = parseFloat(b.querySelector('p:nth-of-type(2)').innerText.replace('KES', '').replace(/,/g, '').trim());
+                  return priceA - priceB; // Ascending order
+              });
+          } else if (value === 'priceHighToLow') {
+              productsArray.sort((a, b) => {
+                  const priceA = parseFloat(a.querySelector('p:nth-of-type(2)').innerText.replace('KES', '').replace(/,/g, '').trim());
+                  const priceB = parseFloat(b.querySelector('p:nth-of-type(2)').innerText.replace('KES', '').replace(/,/g, '').trim());
+                  return priceB - priceA; // Descending order
+              });
+          }
+          // Reattach sorted products to the DOM
+          const productContainer = document.querySelector('.products');
+          productContainer.innerHTML = ''; // Clear current products
+          productsArray.forEach(product => productContainer.appendChild(product)); // Append sorted products
+      });
+
+      // Search functionality
+      searchInput.addEventListener('input', function () {
+          const searchTerm = this.value.toLowerCase();
+          const products = document.querySelectorAll('.pics');
+          products.forEach(product => {
+              const productName = product.querySelector('p:nth-of-type(1)').innerText.toLowerCase();
+              if (productName.includes(searchTerm)) {
+                  product.style.display = "block"; // Show product if it matches the search term
+              } else {
+                  product.style.display = "none"; // Hide product if it doesn't match
+              }
+          });
+      });
+  </script>
 </body>
-</html>
