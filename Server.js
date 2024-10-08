@@ -1,46 +1,20 @@
+// Import required modules
 const express = require('express');
-const nodemailer = require('nodemailer');
-const bodyParser = require('body-parser');
-const cors = require('cors');
+const path = require('path');
 
+// Create an instance of the express application
 const app = express();
-const PORT = 3000;
+const PORT = 8080; // Port to run your server
 
-// Middleware
-app.use(cors()); // Allow cross-origin requests
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+// Middleware to serve static files (optional)
+app.use(express.static(path.join(__dirname)));
 
-// Email setup using Nodemailer
-const transporter = nodemailer.createTransport({
-    service: 'gmail', // Use Gmail's SMTP server
-    auth: {
-        user: 'githakajr@gmail.com', // Your Gmail address
-        pass: 'nmgetkkkootqwqmx' // Your Gmail app password
-    }
+// Route to serve the contact.html file
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'contact.html')); // Serve contact.html from the root directory
 });
 
-// Handle form submissions
-app.post('/submit_complaint', (req, res) => {
-    const { name, email, complaint } = req.body;
-
-    const mailOptions = {
-        from: email,
-        to: 'githakajr@gmail.com', // Your email address
-        subject: `New complaint from ${name}`,
-        text: complaint,
-        html: `<b>Name:</b> ${name}<br><b>Email:</b> ${email}<br><b>Complaint:</b><br>${complaint}`
-    };
-
-    transporter.sendMail(mailOptions, (error, info) => {
-        if (error) {
-            return res.status(500).send('Error sending email: ' + error.message);
-        }
-        res.send('Email sent: ' + info.response);
-    });
-});
-
-// Start server
+// Start the server
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
