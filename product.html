@@ -139,6 +139,51 @@
         .show-cart {
             transform: translateX(0);
         }
+        .place-order-btn {
+    background: linear-gradient(135deg, #ff6b6b, #f06595);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 50px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+}
+
+.place-order-btn:hover {
+    background: linear-gradient(135deg, #f06595, #ff6b6b);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+}
+
+.place-order-btn:before {
+    content: '';
+    position: absolute;
+    width: 300%;
+    height: 300%;
+    top: -100%;
+    left: -100%;
+    background: rgba(255, 255, 255, 0.15);
+    transform: rotate(45deg);
+    transition: all 0.5s ease;
+}
+
+.place-order-btn:hover:before {
+    top: 100%;
+    left: 100%;
+}
+
+.place-order-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
 
         .filter-sort {
             display: flex;
@@ -264,6 +309,7 @@
       <div class="cart-footer">
           <p>Total: <span id="totalPrice">KES 0</span></p>
       </div>
+      <button onclick="placeOrder()">Place Order</button>
   </div>
 
   <script>
@@ -309,6 +355,25 @@
       function toggleCart() {
           cartContainer.classList.toggle('show-cart');
       }
+      // New Place Order function
+function placeOrder() {
+    if (cart.length === 0) {
+        alert("Your cart is empty!");
+        return;
+    }
+
+    const orderDetails = cart.map(item => `${item.name} - KES ${item.price.toLocaleString()}`).join('\n');
+    const totalPrice = cart.reduce((acc, item) => acc + item.price, 0);
+
+    const confirmation = confirm(`You are placing the following order:\n\n${orderDetails}\n\nTotal: KES ${totalPrice.toLocaleString()}\n\nDo you want to proceed?`);
+
+    if (confirmation) {
+        // Here you can send the cart data to a server or handle the order
+        alert("Order placed successfully!");
+        cart = []; // Clear cart after placing the order
+        updateCart(cart); // Update cart display
+    }
+}
 
       // Filter functionality
       filter.addEventListener('change', function () {
