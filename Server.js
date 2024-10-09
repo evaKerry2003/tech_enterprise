@@ -13,7 +13,7 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname))); // Serve static files
 
-// MySQL connection
+// MySQL connection (To be replaced with user's own details)
 const db = mysql.createConnection({
     host: 'localhost', 
     user: 'root', 
@@ -30,12 +30,12 @@ db.connect((err) => {
     console.log('Connected to database.');
 });
 
-// Email setup using Nodemailer
+// Email setup using Nodemailer (To be replaced with user's own details)
 const transporter = nodemailer.createTransport({
     service: 'gmail', 
     auth: {
         user: 'githakajr@gmail.com', 
-        pass: 'nmgetkkkootqwqmx' 
+        pass: 'nmgetkkkootqwqmx' //go to google and set up an app password to get one
     }
 });
 
@@ -43,6 +43,7 @@ const transporter = nodemailer.createTransport({
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'contact.html')); // Path to your contact.html file
 });
+
 
 // Route to handle complaints
 app.post('/submit_complaint', (req, res) => {
@@ -57,21 +58,8 @@ app.post('/submit_complaint', (req, res) => {
 
         console.log(`Complaint received from ${name} (${email}): ${complaint}`);
 
-        const mailOptions = {
-            from: 'githakajr@gmail.com',
-            to: email,
-            subject: 'Complaint Received',
-            text: `Dear ${name},\n\nYour complaint has been received:\n\n"${complaint}"\n\nWe will get back to you shortly.\n\nBest regards,\nTimeless Tech`
-        };
-
-        transporter.sendMail(mailOptions, (error, info) => {
-            if (error) {
-                console.error('Error sending email: ', error);
-                return res.status(500).send('Error sending confirmation email');
-            }
-            console.log('Email sent: ' + info.response);
-            res.send('Your complaint has been received successfully!');
-        });
+        // Return success message to client (no email sending)
+        res.send('Your complaint has been received successfully!');
     });
 });
 
