@@ -1,141 +1,471 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <title>Document</title>
-  <style>
-    header {
-      background-color: #222012;
-      padding:15px;
-      color: white;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    a {
-      color:white;
-      text-decoration: none;
-      padding:10px;
-      font-size: 20px;
-      font-weight: bold;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-    .container {
-      position:relative;
-      height:50vh;
-      overflow:hidden;
-      background-image: url("cpu.jpg");
-    }
-    .content {
-      position: absolute;
-      top: 50%;
-      left:50%;
-      transform: translate(-50%, -50%);
-      z-index: 10;
-      color:white;
-      text-align: center;
-    }
-    .content h1 {
-      font-size: 40px;
-    }
-    .content p {
-      font-size: 20px;
-    }
-    .content2 {
-      text-align: center;
-    }
-    .content2 p {
-      font-size: 20px;
-    }
-    .content2 h2 {
-      font-size: 30px;
-    }
-    .slider {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 300%; 
-      height: 100%;
-      display: flex;
-      animation: slide 12s infinite;
-    }
-    .slide {
-      flex: 1;
-      height: 100%;
-    }
-    .slide img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    @keyframes slide {
-      0% { transform: translateX(0); }
-      33% { transform: translateX(-100%); }
-      66% { transform: translateX(-200%); }
-      100% { transform: translateX(0); }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>NEURACORE</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #0e0e0e;
+            color: white;
+            transition: background-color 0.5s, color 0.5s; /* Smooth transition for theme change */
+        }
+
+        header {
+            background-color: #116e04;
+            padding: 20px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            font-size: 32px;
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        a {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        
+
+        .container {
+            position: relative;
+            height: 80vh;
+            overflow: hidden;
+            background-color: #111;
+        }
+
+        .slider {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 300%;
+            height: 100%;
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .slide {
+            flex: 1;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        
+        .slide video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .nav {
+            position: sticky;
+            top: 0;
+            background-color: #116e04;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            z-index: 10;
+        }
+        .nav-buttons {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+            transition: all 0.3s;
+        }
+
+        .nav-buttons button {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s;
+        }
+
+        .nav-buttons button:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+            transform: translateY(-10px);
+        }
+
+        .nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            transition: background-color 0.3s;
+        }
+
+        .nav a.active {
+            background-color: #ff5722;
+            border-radius: 5px;
+        }
+
+        section {
+            padding: 100px 20px;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #section1 {
+          background-color: #222;
+          background-size: cover;
+          background-position: center;
+          position: relative;
+          color: white;
+          padding-bottom: 50px; /* Add padding at the bottom */
+          margin-bottom: 50px; /* Add margin at the bottom for separation */
+          border-bottom: 5px solid #333; /* Add a dark border to enhance separation */
+        }
+        #section1 h2 {
+          color: white; /* Ensure text is visible */
+          text-align: center;
+          margin-bottom: 20px;
+          max-width: 80%;   
+          position: absolute;
+          top: 5%;      
+        }
+        #section1 p{
+          color: white; /* Ensure text is visible */
+          text-align: center;
+          margin-bottom: 20px;
+          max-width: 80%;   
+          position: absolute;
+          top: 10%;
+        }
+        #section2 {
+          background-image: url('https://www.nvidia.com/content/dam/en-zz/Solutions/geforce/ada/rtx-4090/rtx-ai-pc-owned-module-bm-l580-d.jpg');
+          background-size: cover;
+          background-position: center;
+          position: relative;
+          color: white;
+          padding-bottom: 50px; /* Add padding at the bottom */
+          margin-bottom: 50px; /* Add margin at the bottom for separation */
+          border-bottom: 5px solid #333; /* Add a dark border to enhance separation */
+        }
+        
+         #section2 p {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          text-align: center;
+          background: rgba(0, 0, 0, 0.6); /* Dark background to enhance readability */
+          padding: 20px;
+          border-radius: 10px;
+          font-size: 23px;
+        }
+      
+       .Link-btn {
+          position: absolute;
+          top: 60%;
+          left: 26%;
+         background-color: transparent;
+            
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 18px;
+            
+        
+       }
+       .Link-btn:hover {
+          background-color: #116e04;
+       }
+       .Link-btn a{
+        color: white;
+            text-decoration: none;
+            padding: 20px 15px;
+            transition: background-color 0.3s;
+       }
+
+        #section3 {
+          background-image: url('https://preview.redd.it/marvels-spider-man-2-spider-man-vs-venom-1920x1080-v0-pkz07bsammwb1.jpg?width=1080&crop=smart&auto=webp&s=f395d3db5aa4526fe583d069e96761441cabedd2');
+          background-size: cover;
+          background-position: center;
+          position: relative;
+          color: white;
+          padding-top: 50px; /* Add padding at the top */
+          padding-bottom: 50px; /* Add padding at the bottom */
+          border-top: 5px solid #333; /* Add a dark border to enhance separation */
+        }
+        #section1, #section2, #section3 {
+          box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+        }
+        #section3 h2  {
+    color: black; /* Ensure text is visible */
+    text-align: center;
+    margin-bottom: 20px;
+    max-width: 80%;
+    margin: 0 auto; /* Center the text block */
+    position: absolute;
+    top: 5%;
+    font-weight: bolder;
+}
+#section3 p {
+    color: white; /* Ensure text is visible */
+    text-align: center;
+    margin-bottom: 20px;
+    max-width: 80%;
+    margin: 0 auto; /* Center the text block */
+    position: absolute;
+    top: 10%;
+    font-weight: bold;
+}
+        #section1 img {
+            max-width: 100%; /* Ensure image fits within the section */
+            height: auto;
+            margin-top: 20px; /* Add space above the image */
+            
+            
+        }
+        #section3 img {
+    display: block;
+    margin: 20px auto; /* Center the image and add spacing */
+    max-width: 100%; /* Ensure image is responsive */
+    height: auto;
+    left: auto;
+}
+      
+
+        .content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+            color: white;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .content h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .content p {
+            font-size: 24px;
+            line-height: 1.5;
+        }
+
+        .content2 {
+            padding: 50px 20px;
+            text-align: center;
+            background-color: #222;
+        }
+
+        .content2 h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .content2 p {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        footer {
+            background-color: #1a1a1a;
+            color: #888;
+            padding: 20px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .nav-buttons button {
+                padding: 5px 10px;
+                font-size: 16px;
+            }
+        }
+    </style>
 </head>
+
 <body>
-  <header>
-    <h1>NEURACORE</h1>
-    <nav>
-      <a href="home.html" onclick="checkLogin(event)">Home</a>
-      <a href="product.html" onclick="checkLogin(event)">Product</a>
-      <a href="about.html" onclick="checkLogin(event)">About us</a>
-      <a href="contact.html" onclick="checkLogin(event)">Contact us</a>
-      <a href="profile.html" onclick="checkLogin(event)"><i class="fa-regular fa-user"></i></a>
-    </nav>
-  </header>
-  <div class="container">
-    <div class="slider">
-      <div class="slide"><img src="download (1).jfif"></div>
-      <div class="slide"><img src="gpu.jpg"></div>
-      <div class="slide"><img src="laptop.webp"></div>
+    <header>
+        <h1>NEURACORE</h1>
+        <nav>
+            <a href="home.html" onclick="checkLogin(event)">Home</a>
+            <a href="product.html" onclick="checkLogin(event)">Product</a>
+            <a href="about.html" onclick="checkLogin(event)">About us</a>
+            <a href="contact.html" onclick="checkLogin(event)">Contact us</a>
+            <a href="profile.html" onclick="checkLogin(event)"><i class="fa-regular fa-user"></i></a>
+            
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="slider" id="slider">
+            <div class="slide">
+                <video controls>
+                    <source src="https://www.shutterstock.com/shutterstock/videos/1070195062/preview/stock-footage-budapest-hungary-circa-nvidia-geforce-rtx-graphics-card-manufactured-by-evga.webm" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div class="slide">
+                <video controls>
+                    <source src="https://www.shutterstock.com/shutterstock/videos/3445528233/preview/stock-footage-animation-of-the-modern-shooter-video-game-with-bright-graphics-virtual-characters-land-on-the-map.webm" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div class="slide">
+                <video controls>
+                    <source src="https://www.shutterstock.com/shutterstock/videos/1089956465/preview/stock-footage-gamer-girl-streaming-online-action-game-while-explaining-gameplay-to-subscribers-while-sitting-in.webm" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+
+        <!-- Navigation buttons -->
+        <div class="nav-buttons">
+            <button id="prevBtn">&lt; Prev</button>
+            <button id="nextBtn">Next &gt;</button>
+        </div>
+        <div class="content">
+            <h1>Experience the Power of NEURACORE</h1>
+            <p>Unlock your gaming and creative potential with our cutting-edge laptops, desktops, and high-performance GPUs designed for the most demanding users.</p>
+        </div>
     </div>
-    <div class="content">
-      <h1>"Revolutionizing Business Through Innovative Technology Solutions"</h1>
-      <p>Providing cutting-edge solutions in AI, cloud computing, and cybersecurity to streamline operations and drive growth.</p>
+    <div class="nav">
+      <a href="#section1" class="active">Performance</a>
+      <a href="#section2">AI</a>
+      <a href="#section3">DLSS 3</a>
+  </div>
+  <section id="section1">
+    <img src="https://www.nvidia.com/content/nvidiaGDC/us/en_US/geforce/laptops/_jcr_content/root/responsivegrid/nv_container_441651100/nv_container/nv_image.coreimg.100.850.png/1719512063044/geforce-rtx-40-series-laptops-efficiency-chart-2560x1440.png" alt="NVIDIA Efficiency Chart">
+    <h2>Extreme Performance for a Fraction of the Power</h2>
+    <p>GeForce RTX 40 Series and DLSS 3 transforms laptops through process, design, and technologies. The result is up to a massive two-thirds reduction in power for the same performance. Put another way, 40 Series GPUs along with AI beats the previous generation with just one-third of the power.</p>
+    
+</section>
+<section id="section2">
+    <p>Upgrade to advanced AI with NVIDIA GeForce RTX™ GPUs through our shops and accelerate your gaming, creating, productivity, and development. Thanks to specialized built-in AI processors, you get world-leading AI technology powering your Windows PC.</p>
+    <div class="Link-btn">
+        <a href="your-page.html" id="Read-more-link"></a>
+        <button id="Read-more-btn">Read More</button>
     </div>
-  </div>
-  <div class="content2">
-    <h2>SHOP WITH US</h2>
-    <p>We offer our products at an affordable price</p>
-    <p>We also allow installment payments whereby the down payment should be at least 50% of the original price</p>
-    <h3>We Value our customers</h3>
-    <p>To know the products in stock kindly go to the product section</p>
-  </div>
-  <footer>
-  </footer>
+</section>
+<section id="section3">
+    <h2>Max FPS. Max Quality. Powered by AI</h2>
+    <p>DLSS is a revolutionary breakthrough in AI-powered graphics that massively boosts performance. Powered by the new fourth-gen Tensor Cores and Optical Flow Accelerator on GeForce RTX 40 Series Laptop GPUs, DLSS 3 uses AI to create additional high-quality frames and improve image quality.</p>
+    <img src="https://www.nvidia.com/content/nvidiaGDC/us/en_US/geforce/laptops/_jcr_content/root/responsivegrid/nv_container_copy_72_794552090/nv_image_copy.coreimg.100.850.jpeg/1719512063762/nvidia-dlss-3.jpeg" alt="DLSS 3">
+</section>
+    <div class="content2">
+        <h2>Explore Our PC Range</h2>
+        <p>From budget-friendly options to high-performance powerhouses, we have a pc to suit every need.</p>
+        <p>Discover the latest innovations in pc technology, including AI-enhanced performance and advanced cooling systems.</p>
+        <h3>Find Your Perfect Powerhouse</h3>
+        <p>Browse our collection to find the equipment that best fits your lifestyle and preferences.</p>
+    </div>
 
-  <script>
-    // Function to check if the user is logged in
-    function checkLogin(event) {
-      const isLoggedIn = sessionStorage.getItem('loggedIn');
+    <footer>
+        &copy; 2024 NEURACORE. All rights reserved.
+    </footer>
 
-      // If the user is not logged in, prevent navigation and show alert
-      if (!isLoggedIn) {
-        event.preventDefault();
-        alert('You must be signed in to access this page.');
-        window.location.href = 'profile.html'; // Redirect to login page
-      }
+    <script>
+      let currentIndex = 0;
+const slides = document.querySelectorAll('.slide');
+const slider = document.getElementById('slider');
+const totalSlides = slides.length;
+
+document.getElementById('nextBtn').addEventListener('click', () => {
+    if (currentIndex < totalSlides - 1) {  // Ensure it doesn't exceed the last slide
+        currentIndex++;
+        slider.style.transform = `translateX(-${currentIndex * 33.35}%)`;
     }
+});
 
-    // Simulating user login (replace this with actual authentication logic)
-    function login() {
-      sessionStorage.setItem('loggedIn', 'true'); // Set user as logged in
-      alert('Logged in successfully');
+document.getElementById('prevBtn').addEventListener('click', () => {
+    if (currentIndex > 0) {  // Ensure it doesn't go below the first slide
+        currentIndex--;
+        slider.style.transform = `translateX(-${currentIndex * 33.35}%)`;
     }
+});
 
-    // Simulating user logout
-    function logout() {
-      sessionStorage.removeItem('loggedIn'); // Remove login status
-      alert('Logged out successfully');
-    }
-  </script>
+        // Function to check if the user is logged in
+        function checkLogin(event) {
+            const isLoggedIn = sessionStorage.getItem('loggedIn');
+
+            // If the user is not logged in, prevent navigation and show alert
+            if (!isLoggedIn) {
+                event.preventDefault();
+                alert('You must be signed in to access this page.');
+                window.location.href = 'profile.html'; // Redirect to login page
+            }
+        }
+
+        // Simulating user login (replace this with actual authentication logic)
+        function login() {
+            sessionStorage.setItem('loggedIn', 'true'); // Set user as logged in
+            alert('Logged in successfully');
+        }
+
+        // Simulating user logout
+        function logout() {
+            sessionStorage.removeItem('loggedIn'); // Remove login status
+            alert('Logged out successfully');
+        }
+        const navLinks = document.querySelectorAll('.nav a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+
+            // Get current scroll position
+            const scrollPosition = document.documentElement.scrollTop;
+
+            // Loop through sections to find the current section
+            document.querySelectorAll('section').forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+
+                if (scrollPosition >= sectionTop - sectionHeight / 3) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            // Highlight the current navigation link
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+          });
+    </script>
 </body>
+
 </html>
+
