@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <title>AI in Gaming Animation and Design</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #13042c;
+            color: #f5f5f5;
+        }
+
+        header {
+            background-color: #2c2f33;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        header h1 {
+            margin: 0;
+            color: #2cc417;
+            font-size: 32px;
+        }
+
+        /* Hamburger menu */
+        .hamburger {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #fff;
+        }
+
+        /* Sidebar */
+        #sidebar {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #1f1f1f; /* Darker background color */
+            overflow-x: hidden;
+            transition: width 0.5s, background-color 0.5s; /* Smooth transition */
+            padding-top: 60px;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5); /* Box shadow for depth */
+        }
+
+        #sidebar a {
+            padding: 15px 20px; /* Increased padding */
+            text-decoration: none;
+            font-size: 18px;
+            color: #f5f5f5;
+            display: block;
+            transition: background-color 0.3s, color 0.3s; /* Transition effect on hover */
+            border-bottom: 1px solid #2c2f33; /* Adding a bottom border for separation */
+        }
+
+        #sidebar a:hover {
+            background-color: #2cc417; /* Change background on hover */
+            color: #ffffff; /* Change text color on hover */
+        }
+
+        #sidebar .closebtn {
+            position: absolute;
+            top: 10px;
+            right: 25px;
+            font-size: 30px;
+            cursor: pointer;
+            color: #f5f5f5; /* Ensure close button is visible */
+        }
+
+        #sidebar .closebtn:hover {
+            color: #ff4d4d; /* Change close button color on hover */
+        }
+
+        section {
+            padding: 50px;
+            text-align: center;
+        }
+
+        section h2 {
+            color: #2cc417;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        section p {
+            font-size: 18px;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            margin-bottom: 30px;
+        }
+
+        .Link-btn {
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        .Link-btn a {
+            text-decoration: none;
+            background-color: #2cc417;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 18px;
+            transition: background-color 0.3s;
+        }
+
+        .Link-btn a:hover {
+            background-color: #1a9e0e;
+        }
+
+        footer {
+            background-color: #2c2f33;
+            padding: 20px;
+            text-align: center;
+            color: #f5f5f5;
+        }
+
+        /* Text-to-speech */
+        #tts-btn {
+            background-color: #2cc417;
+            color: white;
+            border: none;
+            padding: 10px;
+            margin-top: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        #tts-btn i {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <span class="hamburger" onclick="openSidebar()">&#9776;</span>
+    <h1>AI in Gaming Animation and Design</h1>
+</header>
+
+<!-- Sidebar -->
+<div id="sidebar">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeSidebar()">&times;</a>
+    <a href="https://www.nvidia.com/en-us/ai-on-rtx/" target="_blank">Revolutionalizing AI</a>
+    <a href="https://www.unrealengine.com/en-US" target="_blank">AI in Game Design</a>
+    <a href="https://www.nvidia.com/en-us/geforce/rtx/" target="_blank">RayTracing in Games</a>
+    <a href="https://www.layer.ai/" target="_blank">Harnessing AI</a>
+</div>
+
+<section id="ai-gaming-animation">
+    <h2>AI in Gaming Animation</h2>
+    <p id="animation-content">
+        Artificial Intelligence (AI) has revolutionized gaming animation by bringing characters and environments to life in ways
+        that were previously unimaginable. AI-powered algorithms now allow game developers to create lifelike animations that
+        respond to real-time inputs, creating a more immersive gaming experience. AI helps generate realistic movement,
+        facial expressions, and decision-making behaviors for non-playable characters (NPCs), enhancing the overall
+        dynamics of games.
+    </p>
+    
+    <button id="tts-btn" onclick="speakContent('animation-content')">
+        <i class="fa-solid fa-volume-low"></i> Read Aloud
+    </button>
+    <!-- AI-powered video showcasing DLSS in Gaming Animation -->
+    <div>
+        <h3>NVIDIA RayTracing in Gaming</h3>
+        <iframe width="800" height="500" src="https://cdn.codeground.org/resources/495bf4b341/AYdaKNUaAMQAUGpB.gif" frameborder="0" allowfullscreen></iframe>
+    </div>
+</section>
+
+<section id="ai-design">
+    <h2>AI in Game and Graphic Design</h2>
+    <p id="design-content">
+        In game design, AI is playing a significant role in shaping the creative process. By utilizing machine learning, AI tools
+        are capable of generating unique game environments, character designs, and even entire storylines. AI design software
+        can analyze previous designs and generate new concepts with minimal human intervention. From 3D modeling to texture
+        generation, AI is changing how artists create and optimize game assets in the design pipeline.
+    </p>
+    
+    <button id="tts-btn" onclick="speakContent('design-content')">
+        <i class="fa-solid fa-volume-low"></i> Read Aloud
+    </button>
+</section>
+
+<section class="ai-features" id="ai-recommendations">
+    <h3>AI Recommendations for You</h3>
+    <p>Based on your interests in AI, we suggest reading more about how AI improves game physics and environment design.</p>
+    <div class="Link-btn">
+        <a href="ai-physics.html">AI in Game Physics</a>
+    </div>
+    <!-- Video about AI-powered game physics -->
+</section>
+
+<footer>
+    <p>&copy; 2024 AI in Gaming Animation and Design | All Rights Reserved</p>
+</footer>
+
+<script>
+    // Text-to-speech function
+    function speakContent(contentId) {
+        const content = document.getElementById(contentId).innerText;
+        const utterance = new SpeechSynthesisUtterance(content);
+        window.speechSynthesis.speak(utterance);
+    }
+
+    // Open sidebar
+    function openSidebar() {
+        document.getElementById("sidebar").style.width = "250px";
+    }
+
+    // Close sidebar
+    function closeSidebar() {
+        document.getElementById("sidebar").style.width = "0";
+    }
+</script>
+
+</body>
+</html>

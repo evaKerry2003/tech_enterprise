@@ -15,13 +15,13 @@
 
         body {
             font-family: Arial, sans-serif;
-            background-color: #0e0e0e;
+            background-color: black;
             color: white;
             transition: background-color 0.5s, color 0.5s; /* Smooth transition for theme change */
         }
 
         header {
-            background-color: #116e04;
+            background-color:#13042c ;
             padding: 20px;
             color: white;
             display: flex;
@@ -86,7 +86,7 @@
         .nav {
             position: sticky;
             top: 0;
-            background-color: #116e04;
+            background-color: #13042c;
             padding: 10px;
             display: flex;
             justify-content: center;
@@ -163,6 +163,11 @@
           max-width: 80%;   
           position: absolute;
           top: 10%;
+          font-size: 18px;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            margin-bottom: 30px;
         }
         #section2 {
           background-image: url('https://www.nvidia.com/content/dam/en-zz/Solutions/geforce/ada/rtx-4090/rtx-ai-pc-owned-module-bm-l580-d.jpg');
@@ -187,28 +192,41 @@
           font-size: 23px;
         }
       
-       .Link-btn {
-          position: absolute;
-          top: 60%;
-          left: 26%;
-         background-color: transparent;
+        .Link-btn {
+            margin-top: 160px;
             
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-            font-size: 18px;
-            
-        
-       }
-       .Link-btn:hover {
-          background-color: #116e04;
-       }
-       .Link-btn a{
-        color: white;
+        }
+
+        .Link-btn a {
             text-decoration: none;
-            padding: 20px 15px;
+            background-color: #2bc417;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 18px;
             transition: background-color 0.3s;
-       }
+        }
+
+        .Link-btn a:hover {
+            background-color: #1a9e0e;
+        }
+        .Link-btn1 {
+            margin-bottom: 25%; 
+        }
+
+        .Link-btn1 a {
+            text-decoration: none;
+            background-color: #2bc417;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 18px;
+            transition: background-color 0.3s;
+        }
+
+        .Link-btn1 a:hover {
+            background-color: #1a9e0e;
+        }
 
         #section3 {
           background-image: url('https://preview.redd.it/marvels-spider-man-2-spider-man-vs-venom-1920x1080-v0-pkz07bsammwb1.jpg?width=1080&crop=smart&auto=webp&s=f395d3db5aa4526fe583d069e96761441cabedd2');
@@ -230,7 +248,7 @@
     max-width: 80%;
     margin: 0 auto; /* Center the text block */
     position: absolute;
-    top: 5%;
+    top: 1%;
     font-weight: bolder;
 }
 #section3 p {
@@ -240,8 +258,13 @@
     max-width: 80%;
     margin: 0 auto; /* Center the text block */
     position: absolute;
-    top: 10%;
+    top: 4%;
     font-weight: bold;
+    font-size: 18px;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            margin-bottom: 30px;
 }
         #section1 img {
             max-width: 100%; /* Ensure image fits within the section */
@@ -249,13 +272,16 @@
             margin-top: 20px; /* Add space above the image */
             
             
+            
         }
         #section3 img {
     display: block;
-    margin: 20px auto; /* Center the image and add spacing */
+    margin-top: 10%;
     max-width: 100%; /* Ensure image is responsive */
     height: auto;
     left: auto;
+    position: absolute;
+    
 }
       
 
@@ -374,15 +400,17 @@
 <section id="section2">
     <p>Upgrade to advanced AI with NVIDIA GeForce RTX™ GPUs through our shops and accelerate your gaming, creating, productivity, and development. Thanks to specialized built-in AI processors, you get world-leading AI technology powering your Windows PC.</p>
     <div class="Link-btn">
-        <a href="your-page.html" id="Read-more-link"></a>
-        <button id="Read-more-btn">Read More</button>
+      <a href="AI.html">Read More</a>
     </div>
 </section>
 <section id="section3">
     <h2>Max FPS. Max Quality. Powered by AI</h2>
     <p>DLSS is a revolutionary breakthrough in AI-powered graphics that massively boosts performance. Powered by the new fourth-gen Tensor Cores and Optical Flow Accelerator on GeForce RTX 40 Series Laptop GPUs, DLSS 3 uses AI to create additional high-quality frames and improve image quality.</p>
     <img src="https://www.nvidia.com/content/nvidiaGDC/us/en_US/geforce/laptops/_jcr_content/root/responsivegrid/nv_container_copy_72_794552090/nv_image_copy.coreimg.100.850.jpeg/1719512063762/nvidia-dlss-3.jpeg" alt="DLSS 3">
-</section>
+    <div class="Link-btn1">
+      <a href="DLSS 3.html">Read More</a>
+    </div>
+  </section>
     <div class="content2">
         <h2>Explore Our PC Range</h2>
         <p>From budget-friendly options to high-performance powerhouses, we have a pc to suit every need.</p>
