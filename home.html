@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>NEURACORE</title>
     <style>
@@ -75,6 +76,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
         }
 
         
@@ -111,6 +113,8 @@
             cursor: pointer;
             font-size: 18px;
             transition: background-color 0.3s;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
         }
 
         .nav-buttons button:hover {
@@ -156,6 +160,20 @@
           position: absolute;
           top: 5%;      
         }
+        .autoShow{
+    animation: autoShowAnimation both;
+    animation-timeline: view(70% 5%);
+
+}
+@keyframes autoShowAnimation{
+    from{
+        opacity: 0;
+        transform: translateY(200px) scale(0.3);
+    }to{
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
         #section1 p{
           color: white; /* Ensure text is visible */
           text-align: center;
@@ -205,6 +223,7 @@
             border-radius: 5px;
             font-size: 18px;
             transition: background-color 0.3s;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
         }
 
         .Link-btn a:hover {
@@ -222,6 +241,7 @@
             border-radius: 5px;
             font-size: 18px;
             transition: background-color 0.3s;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
         }
 
         .Link-btn1 a:hover {
@@ -296,6 +316,8 @@
             background: rgba(0, 0, 0, 0.5);
             padding: 20px;
             border-radius: 10px;
+            background: rgba(0, 0, 0, 0.6);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
         }
 
         .content h1 {
@@ -317,6 +339,7 @@
         .content2 h2 {
             font-size: 36px;
             margin-bottom: 20px;
+            padding: 60px 40px;
         }
 
         .content2 p {
@@ -330,6 +353,8 @@
             padding: 20px;
             text-align: center;
             font-size: 14px;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+            border-top: 1px solid #333;
         }
 
         @media (max-width: 768px) {
@@ -391,19 +416,20 @@
       <a href="#section2">AI</a>
       <a href="#section3">DLSS 3</a>
   </div>
-  <section id="section1">
+  <section id="section1" class="autoShow">
+
     <img src="https://www.nvidia.com/content/nvidiaGDC/us/en_US/geforce/laptops/_jcr_content/root/responsivegrid/nv_container_441651100/nv_container/nv_image.coreimg.100.850.png/1719512063044/geforce-rtx-40-series-laptops-efficiency-chart-2560x1440.png" alt="NVIDIA Efficiency Chart">
-    <h2>Extreme Performance for a Fraction of the Power</h2>
+    <h2 class="autoShow">Extreme Performance for a Fraction of the Power</h2>
     <p>GeForce RTX 40 Series and DLSS 3 transforms laptops through process, design, and technologies. The result is up to a massive two-thirds reduction in power for the same performance. Put another way, 40 Series GPUs along with AI beats the previous generation with just one-third of the power.</p>
     
 </section>
-<section id="section2">
+<section id="section2" class="autoShow">
     <p>Upgrade to advanced AI with NVIDIA GeForce RTX™ GPUs through our shops and accelerate your gaming, creating, productivity, and development. Thanks to specialized built-in AI processors, you get world-leading AI technology powering your Windows PC.</p>
     <div class="Link-btn">
       <a href="AI.html">Read More</a>
     </div>
 </section>
-<section id="section3">
+<section id="section3" class="autoShow">
     <h2>Max FPS. Max Quality. Powered by AI</h2>
     <p>DLSS is a revolutionary breakthrough in AI-powered graphics that massively boosts performance. Powered by the new fourth-gen Tensor Cores and Optical Flow Accelerator on GeForce RTX 40 Series Laptop GPUs, DLSS 3 uses AI to create additional high-quality frames and improve image quality.</p>
     <img src="https://www.nvidia.com/content/nvidiaGDC/us/en_US/geforce/laptops/_jcr_content/root/responsivegrid/nv_container_copy_72_794552090/nv_image_copy.coreimg.100.850.jpeg/1719512063762/nvidia-dlss-3.jpeg" alt="DLSS 3">
@@ -411,7 +437,7 @@
       <a href="DLSS 3.html">Read More</a>
     </div>
   </section>
-    <div class="content2">
+    <div class="content2 ">
         <h2>Explore Our PC Range</h2>
         <p>From budget-friendly options to high-performance powerhouses, we have a pc to suit every need.</p>
         <p>Discover the latest innovations in pc technology, including AI-enhanced performance and advanced cooling systems.</p>

@@ -27,6 +27,28 @@
             font-size: 32px;
         }
 
+        /* Navigation styles */
+        nav {
+            background-color: #2c2f33; /* Background for the nav */
+            padding: 10px 0; /* Padding around the nav */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Box shadow for depth */
+        }
+
+        nav a {
+            color: #f5f5f5; /* Link color */
+            text-decoration: none; /* No underline */
+            padding: 10px 20px; /* Padding for the links */
+            margin: 0 15px; /* Margin between links */
+            font-size: 18px; /* Font size for links */
+            transition: background-color 0.3s, color 0.3s; /* Transition for hover effects */
+        }
+
+        nav a:hover {
+            background-color: #2cc417; /* Background color on hover */
+            color: #fff; /* Text color on hover */
+            border-radius: 5px; /* Rounded corners */
+        }
+
         /* Hamburger menu */
         .hamburger {
             position: absolute;
@@ -141,86 +163,88 @@
     </style>
 </head>
 <body>
+    <nav>
+        <header>
+            <span class="hamburger" onclick="openSidebar()">&#9776;</span>
+            <h1>AI in Gaming Animation and Design</h1>
+        </header>
+        <a href="home.html">Home</a> <!-- Added Home Link -->
+    </nav>
 
-<header>
-    <span class="hamburger" onclick="openSidebar()">&#9776;</span>
-    <h1>AI in Gaming Animation and Design</h1>
-</header>
-
-<!-- Sidebar -->
-<div id="sidebar">
-    <a href="javascript:void(0)" class="closebtn" onclick="closeSidebar()">&times;</a>
-    <a href="https://www.nvidia.com/en-us/ai-on-rtx/" target="_blank">Revolutionalizing AI</a>
-    <a href="https://www.unrealengine.com/en-US" target="_blank">AI in Game Design</a>
-    <a href="https://www.nvidia.com/en-us/geforce/rtx/" target="_blank">RayTracing in Games</a>
-    <a href="https://www.layer.ai/" target="_blank">Harnessing AI</a>
-</div>
-
-<section id="ai-gaming-animation">
-    <h2>AI in Gaming Animation</h2>
-    <p id="animation-content">
-        Artificial Intelligence (AI) has revolutionized gaming animation by bringing characters and environments to life in ways
-        that were previously unimaginable. AI-powered algorithms now allow game developers to create lifelike animations that
-        respond to real-time inputs, creating a more immersive gaming experience. AI helps generate realistic movement,
-        facial expressions, and decision-making behaviors for non-playable characters (NPCs), enhancing the overall
-        dynamics of games.
-    </p>
-    
-    <button id="tts-btn" onclick="speakContent('animation-content')">
-        <i class="fa-solid fa-volume-low"></i> Read Aloud
-    </button>
-    <!-- AI-powered video showcasing DLSS in Gaming Animation -->
-    <div>
-        <h3>NVIDIA RayTracing in Gaming</h3>
-        <iframe width="800" height="500" src="https://cdn.codeground.org/resources/495bf4b341/AYdaKNUaAMQAUGpB.gif" frameborder="0" allowfullscreen></iframe>
+    <!-- Sidebar -->
+    <div id="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeSidebar()">&times;</a>
+        <a href="https://www.nvidia.com/en-us/ai-on-rtx/" target="_blank">Revolutionalizing AI</a>
+        <a href="https://www.unrealengine.com/en-US" target="_blank">AI in Game Design</a>
+        <a href="https://www.nvidia.com/en-us/geforce/rtx/" target="_blank">RayTracing in Games</a>
+        <a href="https://www.layer.ai/" target="_blank">Harnessing AI</a>
     </div>
-</section>
 
-<section id="ai-design">
-    <h2>AI in Game and Graphic Design</h2>
-    <p id="design-content">
-        In game design, AI is playing a significant role in shaping the creative process. By utilizing machine learning, AI tools
-        are capable of generating unique game environments, character designs, and even entire storylines. AI design software
-        can analyze previous designs and generate new concepts with minimal human intervention. From 3D modeling to texture
-        generation, AI is changing how artists create and optimize game assets in the design pipeline.
-    </p>
-    
-    <button id="tts-btn" onclick="speakContent('design-content')">
-        <i class="fa-solid fa-volume-low"></i> Read Aloud
-    </button>
-</section>
+    <section id="ai-gaming-animation">
+        <h2>AI in Gaming Animation</h2>
+        <p id="animation-content">
+            Artificial Intelligence (AI) has revolutionized gaming animation by bringing characters and environments to life in ways
+            that were previously unimaginable. AI-powered algorithms now allow game developers to create lifelike animations that
+            respond to real-time inputs, creating a more immersive gaming experience. AI helps generate realistic movement,
+            facial expressions, and decision-making behaviors for non-playable characters (NPCs), enhancing the overall
+            dynamics of games.
+        </p>
+        
+        <button id="tts-btn" onclick="speakContent('animation-content')">
+            <i class="fa-solid fa-volume-low"></i> Read Aloud
+        </button>
+        <!-- AI-powered video showcasing DLSS in Gaming Animation -->
+        <div>
+            <h3>NVIDIA RayTracing in Gaming</h3>
+            <iframe width="800" height="500" src="https://cdn.codeground.org/resources/495bf4b341/AYdaKNUaAMQAUGpB.gif" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </section>
 
-<section class="ai-features" id="ai-recommendations">
-    <h3>AI Recommendations for You</h3>
-    <p>Based on your interests in AI, we suggest reading more about how AI improves game physics and environment design.</p>
-    <div class="Link-btn">
-        <a href="ai-physics.html">AI in Game Physics</a>
-    </div>
-    <!-- Video about AI-powered game physics -->
-</section>
+    <section id="ai-design">
+        <h2>AI in Game and Graphic Design</h2>
+        <p id="design-content">
+            In game design, AI is playing a significant role in shaping the creative process. By utilizing machine learning, AI tools
+            are capable of generating unique game environments, character designs, and even entire storylines. AI design software
+            can analyze previous designs and generate new concepts with minimal human intervention. From 3D modeling to texture
+            generation, AI is changing how artists create and optimize game assets in the design pipeline.
+        </p>
+        
+        <button id="tts-btn" onclick="speakContent('design-content')">
+            <i class="fa-solid fa-volume-low"></i> Read Aloud
+        </button>
+    </section>
 
-<footer>
-    <p>&copy; 2024 AI in Gaming Animation and Design | All Rights Reserved</p>
-</footer>
+    <section class="ai-features" id="ai-recommendations">
+        <h3>AI Recommendations for You</h3>
+        <p>Based on your interests in AI, we suggest reading more about how AI improves game physics and environment design.</p>
+        <div class="Link-btn">
+            <a href="ai-physics.html">AI in Game Physics</a>
+        </div>
+        <!-- Video about AI-powered game physics -->
+    </section>
 
-<script>
-    // Text-to-speech function
-    function speakContent(contentId) {
-        const content = document.getElementById(contentId).innerText;
-        const utterance = new SpeechSynthesisUtterance(content);
-        window.speechSynthesis.speak(utterance);
-    }
+    <footer>
+        <p>&copy; 2024 AI in Gaming Animation and Design | All Rights Reserved</p>
+    </footer>
 
-    // Open sidebar
-    function openSidebar() {
-        document.getElementById("sidebar").style.width = "250px";
-    }
+    <script>
+        // Text-to-speech function
+        function speakContent(contentId) {
+            const content = document.getElementById(contentId).innerText;
+            const utterance = new SpeechSynthesisUtterance(content);
+            window.speechSynthesis.speak(utterance);
+        }
 
-    // Close sidebar
-    function closeSidebar() {
-        document.getElementById("sidebar").style.width = "0";
-    }
-</script>
+        // Open sidebar
+        function openSidebar() {
+            document.getElementById("sidebar").style.width = "250px";
+        }
+
+        // Close sidebar
+        function closeSidebar() {
+            document.getElementById("sidebar").style.width = "0";
+        }
+    </script>
 
 </body>
 </html>
