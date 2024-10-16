@@ -16,37 +16,42 @@
 
         header {
             background-color: #2c2f33;
-            padding: 20px;
+            padding: 10px;
             text-align: center;
             position: relative;
+            z-index: 1000;
         }
 
         header h1 {
             margin: 0;
             color: #2cc417;
             font-size: 32px;
+            z-index: 1005;
+            
         }
 
         /* Navigation styles */
         nav {
-            background-color: #2c2f33; /* Background for the nav */
-            padding: 10px 0; /* Padding around the nav */
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Box shadow for depth */
+            background-color: #2c2f33;
+            padding: 0 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            position: relative;
         }
 
         nav a {
-            color: #f5f5f5; /* Link color */
-            text-decoration: none; /* No underline */
-            padding: 10px 20px; /* Padding for the links */
-            margin: 0 15px; /* Margin between links */
-            font-size: 18px; /* Font size for links */
-            transition: background-color 0.3s, color 0.3s; /* Transition for hover effects */
+            color: #ff0000;
+            text-decoration: none;
+            padding: 1px 20px;
+            margin: 0 10px;
+            font-size: 18px;
+            transition: background-color 0.3s, color 0.3s;    
         }
 
         nav a:hover {
-            background-color: #2cc417; /* Background color on hover */
-            color: #fff; /* Text color on hover */
-            border-radius: 5px; /* Rounded corners */
+            background-color: #2cc417;
+            color: #fff;
+            border-radius: 5px;
         }
 
         /* Hamburger menu */
@@ -57,6 +62,7 @@
             font-size: 24px;
             cursor: pointer;
             color: #fff;
+            z-index: 1000;
         }
 
         /* Sidebar */
@@ -66,26 +72,27 @@
             position: fixed;
             top: 0;
             left: 0;
-            background-color: #1f1f1f; /* Darker background color */
+            background-color: #1f1f1f;
             overflow-x: hidden;
-            transition: width 0.5s, background-color 0.5s; /* Smooth transition */
+            transition: width 0.5s, background-color 0.5s;
             padding-top: 60px;
-            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5); /* Box shadow for depth */
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);
+            z-index: 1001;
         }
 
         #sidebar a {
-            padding: 15px 20px; /* Increased padding */
+            padding: 15px 20px;
             text-decoration: none;
             font-size: 18px;
             color: #f5f5f5;
             display: block;
-            transition: background-color 0.3s, color 0.3s; /* Transition effect on hover */
-            border-bottom: 1px solid #2c2f33; /* Adding a bottom border for separation */
+            transition: background-color 0.3s, color 0.3s;
+            border-bottom: 1px solid #2c2f33;
         }
 
         #sidebar a:hover {
-            background-color: #2cc417; /* Change background on hover */
-            color: #ffffff; /* Change text color on hover */
+            background-color: #2cc417;
+            color: #ffffff;
         }
 
         #sidebar .closebtn {
@@ -94,11 +101,11 @@
             right: 25px;
             font-size: 30px;
             cursor: pointer;
-            color: #f5f5f5; /* Ensure close button is visible */
+            color: #f5f5f5;
         }
 
         #sidebar .closebtn:hover {
-            color: #ff4d4d; /* Change close button color on hover */
+            color: #ff4d4d;
         }
 
         section {
@@ -160,15 +167,175 @@
         #tts-btn i {
             margin-right: 5px;
         }
+
+        /* Carousel styles */
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #3908aa;
+    
+    height: 100vh;
+    width: 100vw;
+}
+
+.container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #f5f5f5;
+    box-shadow: 0 30px 50px #dbdbdb;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.container .slide .item {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    width: 200px;
+    height: 300px;
+    border-radius: 20px;
+    box-shadow: 0 30px 50px #505050;
+    background-position: 50% 50%;
+    background-size: cover;
+    display: inline-block;
+    transition: 0.5s;
+}
+
+/* Make first two items fill the screen */
+.slide .item:nth-child(1),
+.slide .item:nth-child(2) {
+    top: 0;
+    left: 0;
+    transform: translate(0, 0);
+    border-radius: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Adjust other items' positions */
+.slide .item:nth-child(3) {
+    left: 50%;
+}
+.slide .item:nth-child(4) {
+    left: calc(50% + 220px);
+}
+.slide .item:nth-child(5) {
+    left: calc(50% + 440px);
+}
+
+/* Hide items after the fifth */
+.slide .item:nth-child(n + 6) {
+    left: calc(50% + 660px);
+    opacity: 0;
+}
+
+.item .content {
+    position: absolute;
+    top: 50%;
+    left: 100px;
+    width: 300px;
+    text-align: left;
+    color: #eee;
+    transform: translate(0, -50%);
+    font-family: system-ui;
+    display: none;
+}
+
+/* Display content in the second slide */
+.slide .item:nth-child(2) .content {
+    display: block;
+}
+
+.content .name {
+    font-size: 40px;
+    text-transform: uppercase;
+    font-weight: bold;
+    opacity: 0;
+    animation: animate 1s ease-in-out 1 forwards;
+}
+
+.content .des {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: animate 1s ease-in-out 0.3s 1 forwards;
+}
+
+.content button {
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    opacity: 0;
+    animation: animate 1s ease-in-out 0.6s 1 forwards;
+}
+
+@keyframes animate {
+    from {
+        opacity: 0;
+        transform: translate(0, 100px);
+        filter: blur(33px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(0);
+        filter: blur(0);
+    }
+}
+
+/* Navigation buttons */
+.button {
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    bottom: 20px;
+}
+
+.button button {
+    width: 40px;
+    height: 35px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    margin: 0 5px;
+    border: 1px solid #000;
+    transition: 0.3s;
+}
+
+.button button:hover {
+    background: #ababab;
+    color: #fff;
+}
+@media (max-width: 768px) {
+    #sidebar {
+        width: 100%; /* Full width for small screens */
+    }
+}
+@media (max-width: 768px) {
+    .container .item {
+        width: 100%;
+        height: auto;
+        margin-bottom: 20px;
+    }
+}
+
     </style>
 </head>
 <body>
+     
     <nav>
-        <header>
+       <header>
             <span class="hamburger" onclick="openSidebar()">&#9776;</span>
             <h1>AI in Gaming Animation and Design</h1>
         </header>
-        <a href="home.html">Home</a> <!-- Added Home Link -->
+        <a href="home.html">Home</a> 
     </nav>
 
     <!-- Sidebar -->
@@ -180,71 +347,66 @@
         <a href="https://www.layer.ai/" target="_blank">Harnessing AI</a>
     </div>
 
-    <section id="ai-gaming-animation">
-        <h2>AI in Gaming Animation</h2>
-        <p id="animation-content">
-            Artificial Intelligence (AI) has revolutionized gaming animation by bringing characters and environments to life in ways
-            that were previously unimaginable. AI-powered algorithms now allow game developers to create lifelike animations that
-            respond to real-time inputs, creating a more immersive gaming experience. AI helps generate realistic movement,
-            facial expressions, and decision-making behaviors for non-playable characters (NPCs), enhancing the overall
-            dynamics of games.
-        </p>
-        
-        <button id="tts-btn" onclick="speakContent('animation-content')">
-            <i class="fa-solid fa-volume-low"></i> Read Aloud
-        </button>
-        <!-- AI-powered video showcasing DLSS in Gaming Animation -->
-        <div>
-            <h3>NVIDIA RayTracing in Gaming</h3>
-            <iframe width="800" height="500" src="https://cdn.codeground.org/resources/495bf4b341/AYdaKNUaAMQAUGpB.gif" frameborder="0" allowfullscreen></iframe>
+    <!-- Carousel Section -->
+    <div class="container">
+        <div class="slide">
+            <div class="item" style="background-image: url(https://static.vecteezy.com/system/resources/previews/007/455/115/non_2x/abstract-3d-technology-futuristic-geometrical-and-science-neon-background-plexus-digital-wallpaper-business-concept-medical-structure-and-artificial-intelligence-vector.jpg);">
+                <div class="content">
+                    <div class="name">AI in Gaming Animation</div>
+                    <div class="des">Artificial Intelligence (AI) is transforming the landscape of game animation in numerous ways, enhancing the realism, responsiveness, and overall experience of interactive media. Here's an in-depth look at the role of AI in game animation, covering its applications, technologies, and impacts on the industry.<br>
+                        Game animation involves creating the illusion of movement and behavior in characters and objects within a game. Traditionally, this was achieved through keyframe animation, where animators manually define the motion at certain points. However, AI has introduced more dynamic and responsive approaches to animation.</div>
+                    
+                </div>
+            </div>
+            <div class="item" style="background-image: url(https://eu-images.contentstack.com/v3/assets/blt69509c9116440be8/bltdab34f69f74c72fe/65380fc40ef0e002921fc072/AI-thinking-Kittipong_Jirasukhanont-alamy.jpg?width=1280&auto=webp&quality=95&format=jpg&disable=upscale);">
+                <div class="content">
+                    <div class="name">AI in Game Design</div>
+                    <div class="des">Artificial Intelligence (AI) plays a crucial role in modern game design, enhancing player experiences, creating immersive environments, and enabling dynamic gameplay. Here’s an in-depth exploration of AI in game design, covering its various applications, techniques, and the impact it has on the gaming industry.<br>
+                        AI in game design refers to the use of algorithms and computational techniques to simulate intelligent behavior in non-player characters (NPCs), create dynamic environments, and adapt gameplay based on player actions. Unlike traditional programming, where outcomes are predetermined, AI allows for adaptive and responsive behavior that can significantly enhance the gameplay experience.</div>
+                    
+                </div>
+            </div>
+            <div class="item" style="background-image: url(https://plus.unsplash.com/premium_photo-1683121710572-7723bd2e235d?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8YXJ0aWZpY2lhbCUyMGludGVsbGlnZW5jZXxlbnwwfHwwfHx8MA%3D%3D);">
+                <div class="content">
+                    <div class="name">AI in Game Physics</div>
+                    <div class="des">Artificial Intelligence (AI) plays a crucial role in modern game development, particularly in enhancing game physics, which is responsible for creating realistic movements and interactions in a virtual environment.<br>
+                        AI significantly enhances game physics, enabling realistic interactions, dynamic environments, and immersive gameplay. By employing various algorithms and techniques, developers can create engaging experiences that respond intelligently to player actions and physical laws, paving the way for the future of gaming.</div>
+                    
+                </div>
+            </div>
         </div>
-    </section>
 
-    <section id="ai-design">
-        <h2>AI in Game and Graphic Design</h2>
-        <p id="design-content">
-            In game design, AI is playing a significant role in shaping the creative process. By utilizing machine learning, AI tools
-            are capable of generating unique game environments, character designs, and even entire storylines. AI design software
-            can analyze previous designs and generate new concepts with minimal human intervention. From 3D modeling to texture
-            generation, AI is changing how artists create and optimize game assets in the design pipeline.
-        </p>
-        
-        <button id="tts-btn" onclick="speakContent('design-content')">
-            <i class="fa-solid fa-volume-low"></i> Read Aloud
-        </button>
-    </section>
-
-    <section class="ai-features" id="ai-recommendations">
-        <h3>AI Recommendations for You</h3>
-        <p>Based on your interests in AI, we suggest reading more about how AI improves game physics and environment design.</p>
-        <div class="Link-btn">
-            <a href="ai-physics.html">AI in Game Physics</a>
+        <div class="button">
+            <button class="prev"><i class="fa-solid fa-arrow-left"></i></button>
+            <button class="next"><i class="fa-solid fa-arrow-right"></i></button>
         </div>
-        <!-- Video about AI-powered game physics -->
-    </section>
+    </div>
 
     <footer>
         <p>&copy; 2024 AI in Gaming Animation and Design | All Rights Reserved</p>
     </footer>
 
     <script>
-        // Text-to-speech function
-        function speakContent(contentId) {
-            const content = document.getElementById(contentId).innerText;
-            const utterance = new SpeechSynthesisUtterance(content);
-            window.speechSynthesis.speak(utterance);
-        }
+        let next = document.querySelector('.next')
+let prev = document.querySelector('.prev')
 
-        // Open sidebar
+next.addEventListener('click', function(){
+    let items = document.querySelectorAll('.item')
+    document.querySelector('.slide').appendChild(items[0])
+})
+
+prev.addEventListener('click', function(){
+    let items = document.querySelectorAll('.item')
+    document.querySelector('.slide').prepend(items[items.length - 1]) // here the length of items = 6
+})
+        // Sidebar toggle
         function openSidebar() {
             document.getElementById("sidebar").style.width = "250px";
         }
 
-        // Close sidebar
         function closeSidebar() {
             document.getElementById("sidebar").style.width = "0";
         }
     </script>
-
 </body>
 </html>

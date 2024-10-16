@@ -7,166 +7,249 @@
     <title>DLSS 3 Overview</title>
 </head>
 <style>
-    * {
+body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #13042c;
+            color: #f5f5f5;
+        }
+
+        header {
+            background-color: #2c2f33;
+            padding: 0;
+            text-align: center;
+            position: relative;
+            z-index: 1000;
+        }
+
+        header h1 {
+            margin: 0;
+            color: #2cc417;
+            font-size: 32px;
+            z-index: 1005;
+            
+        }
+
+        /* Navigation styles */
+        nav {
+            background-color: #2c2f33;
+            padding: 0 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            position: relative;
+           
+        }
+
+        nav a {
+            color: #ff0000;
+            text-decoration: none;
+            padding: 1px 20px;
+            margin: 0 10px;
+            font-size: 18px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #2cc417;
+            color: #fff;
+            border-radius: 5px;
+        }
+
+
+        /* Carousel styles */
+        * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background-color: #0e0e0e;
-    color: #ffffff;
-    line-height: 1.6;
+    background: #3908aa;
+    
+    height: 100vh;
+    width: 100vw;
 }
 
-header {
-    background-color: #1a1a1a;
-    padding: 20px;
-    text-align: center;
-    border-bottom: 3px solid #007acc; /* Adds a bottom border for distinction */
+.container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #f5f5f5;
+    box-shadow: 0 30px 50px #dbdbdb;
+    overflow: hidden;
+    z-index: 0;
 }
 
-header h1 {
-    font-size: 2.5em;
-    font-weight: bold;
-    letter-spacing: 1px; /* Adds spacing between letters */
-}
-nav {
-    background-color: #1a1a1a; /* Background color of the nav */
-    padding: 10px 20px; /* Padding for better spacing */
-    border-bottom: 2px solid #007acc; /* Bottom border to separate from content */
-}
-
-nav a {
-    color: #ffffff; /* Link color */
-    margin: 0 20px; /* Space between links */
-    text-decoration: none; /* Remove underline */
-    font-weight: bold; /* Bold text for emphasis */
-    font-size: 1.1em; /* Slightly larger font for readability */
-    transition: color 0.3s, transform 0.3s; /* Transition effects for hover */
+.container .slide .item {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    width: 200px;
+    height: 300px;
+    border-radius: 20px;
+    box-shadow: 0 30px 50px #505050;
+    background-position: 50% 50%;
+    background-size: cover;
+    display: inline-block;
+    transition: 0.5s;
 }
 
-nav a:hover {
-    color: #007acc; /* Color change on hover */
-    transform: scale(1.1); /* Scale effect on hover for interaction */
-}
-
-
-nav a {
-    color: #ffffff;
-    margin: 0 15px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s; /* Smooth transition on hover */
-}
-
-nav a:hover {
-    text-decoration: underline;
-    color: #007acc; /* Change color on hover for better visibility */
-}
-
-.content {
-    padding: 50px 20px;
-    text-align: center;
-    background: rgba(255, 255, 255, 0.1); /* Semi-transparent background for content */
-    border-radius: 10px; /* Rounded corners for content sections */
-    margin: 20px; /* Adds margin around the content sections */
-}
-
-h2 {
-    font-size: 2em;
-    margin-bottom: 20px;
-    color: #007acc; /* Makes headings stand out */
-}
-
-ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0; /* Removes default margin */
-}
-
-ul li {
-    margin: 10px 0; /* Adds spacing between list items */
-}
-
-.gallery {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    padding: 20px 0; /* Adds padding for better spacing */
-}
-
-.gallery img {
-    width: 300px;
-    height: auto;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Enhanced shadow for depth */
-    transition: transform 0.3s; /* Smooth transform effect */
-}
-
-.gallery img:hover {
-    transform: scale(1.05); /* Scale effect on hover */
-}
-
-footer {
-    background-color: #1a1a1a;
-    color: #888;
-    text-align: center;
-    padding: 20px;
-    position: relative;
-    bottom: 0;
+/* Make first two items fill the screen */
+.slide .item:nth-child(1),
+.slide .item:nth-child(2) {
+    top: 0;
+    left: 0;
+    transform: translate(0, 0);
+    border-radius: 0;
     width: 100%;
-    font-size: 0.9em; /* Slightly smaller font size */
+    height: 100%;
 }
 
 
+
+/* Hide items after the second */
+.slide .item:nth-child(n + 3) {
+    left: calc(50% + 660px);
+    opacity: 0;
+}
+
+.item .content {
+    position: absolute;
+            bottom: 20px; /* Space from the bottom */
+            left: 20px; /* Space from the left */
+            right: 20px; /* Space from the right */
+            background: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            max-width: 600px; /* Maximum width for content */
+            text-align: left; /* Left-align text for better readability */
+            color: #ffffff; /* Ensure text color is visible on the background */
+            
+}
+
+/* Display content in the second slide */
+.slide .item:nth-child(2) .content {
+    display: block;
+}
+
+.content .name {
+    font-size: 40px;
+    text-transform: uppercase;
+    font-weight: bold;
+    opacity: 0;
+    animation: animate 1s ease-in-out 1 forwards;
+    color: yellow;
+}
+
+.content .des {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: animate 1s ease-in-out 0.3s 1 forwards;
+}
+
+.content button {
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    opacity: 0;
+    animation: animate 1s ease-in-out 0.6s 1 forwards;
+}
+
+@keyframes animate {
+    from {
+        opacity: 0;
+        transform: translate(0, 100px);
+        filter: blur(33px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(0);
+        filter: blur(0);
+    }
+}
+
+
+
+@media (max-width: 768px) {
+    .container .item {
+        width: 100%;
+        height: auto;
+        margin-bottom: 20px;
+    }
+}
 </style>
-<body><nav>
+<body>
+<nav>
     <header>
         <h1>Discover DLSS 3</h1>
-      
     </header>
     <a href="home.html">Home</a>
-   
-    
-   
 </nav>
-    
 
-    <section id="about" class="content">
-        <h2>What is DLSS 3?</h2>
-        <p>
-            Deep Learning Super Sampling 3 (DLSS 3) is an advanced upscaling technology developed by NVIDIA that leverages artificial intelligence (AI) and machine learning (ML) to enhance the performance and visual quality of video games.<br> Building on its predecessors, DLSS 3 aims to provide gamers with smoother gameplay and higher frame rates while maintaining impressive image fidelity.<br>DLSS 3 represents a significant advancement in gaming technology, offering an innovative solution to the challenges of high-performance gaming. By leveraging AI and machine learning, NVIDIA has created a tool that enhances both frame rates and image quality, allowing gamers to experience their favorite titles in new and exciting ways.<br> As more games adopt this technology, DLSS 3 is poised to shape the future of gaming, making it accessible to a broader audience while pushing the boundaries of graphical fidelity.
-        </p>
-    </section>
-
-    <section id="benefits" class="content">
-        <h2>Benefits of DLSS 3</h2>
-        <ul>
-            <li>DLSS 3 can significantly boost frame rates, allowing games to run smoother and more responsively. This is especially beneficial for fast-paced games like first-person shooters and racing games, where higher frame rates can enhance gameplay experiences.</li>
-            <li>By upscaling lower-resolution images using AI, DLSS 3 delivers high-quality visuals that can rival native resolution. This results in sharper textures and improved detail without the performance hit that typically comes with rendering at higher resolutions.</li>
-            <li>DLSS 3 enables gamers to run demanding games at lower native resolutions, reducing the load on the GPU. This means that even those with mid-range graphics cards can enjoy high-quality graphics and performance without needing top-tier hardware.</li>
-            <li>DLSS 3 integrates with NVIDIA Reflex to minimize input lag, ensuring that gamers experience a more responsive gaming environment. This combination is particularly important for competitive gaming, where quick reactions can make a significant difference.</li>
-        </ul>
-    </section>
-
-    <section id="showcase" class="content">
-        <h2>DLSS 3 Showcase</h2>
-        <div class="gallery">
-            <img src="data:image/jpeg;base64,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" alt="DLSS 3 Example">
-            <img src="data:image/jpeg;base64,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" alt="Game Example">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcST7qe1YWJgT1nmeFWnN_E4TXQqxeY5t16k0g&s" alt="Graphics Example">
+<!-- Carousel Section -->
+<section id="showcase" class="content">
+    <h2></h2>
+    <div class="container">
+        <div class="slide">
+            <div class="item" style="background-image: url(https://i.pcmag.com/imagery/articles/05JmK5UWb7k4aVClz7CkyE7-5.fit_lim.size_1050x.png);">
+                <div class="content">
+                    <div class="name">What is DLSS 3?</div>
+                    <div class="des">Deep Learning Super Sampling 3 (DLSS 3) is an advanced upscaling technology developed by NVIDIA that leverages artificial intelligence (AI) and machine learning (ML) to enhance the performance and visual quality of video games.<br>
+        Building on its predecessors, DLSS 3 aims to provide gamers with smoother gameplay and higher frame rates while maintaining impressive image fidelity.<br>
+        DLSS 3 represents a significant advancement in gaming technology, offering an innovative solution to the challenges of high-performance gaming. By leveraging AI and machine learning, NVIDIA has created a tool that enhances both frame rates and image quality, allowing gamers to experience their favorite titles in new and exciting ways.<br>
+        As more games adopt this technology, DLSS 3 is poised to shape the future of gaming, making it accessible to a broader audience while pushing the boundaries of graphical fidelity.</div>
+                    
+                </div>
+            </div>
+            <div class="item" style="background-image: url(https://developer-blogs.nvidia.com/wp-content/uploads/2022/09/nvidia-dlss-3-frame-generation-1.jpg);">
+                <div class="content">
+                    <div class="name">Benefits of DLSS 3</div>
+                    <div class="des">
+        DLSS 3 can significantly boost frame rates, allowing games to run smoother and more responsively. This is especially beneficial for fast-paced games like first-person shooters and racing games, where higher frame rates can enhance gameplay experiences.
+        By upscaling lower-resolution images using AI, DLSS 3 delivers high-quality visuals that can rival native resolution. This results in sharper textures and improved detail without the performance hit that typically comes with rendering at higher resolutions.
+        DLSS 3 enables gamers to run demanding games at lower native resolutions, reducing the load on the GPU. This means that even those with mid-range graphics cards can enjoy high-quality graphics and performance without needing top-tier hardware.
+        DLSS 3 integrates with NVIDIA Reflex to minimize input lag, ensuring that gamers experience a more responsive gaming environment. This combination is particularly important for competitive gaming, where quick reactions can make a significant difference.
+    </div>
+                    
+                </div>
+           
         </div>
-    </section>
 
- 
+        <div class="button">
+            <button class="prev"><i class="fa-solid fa-arrow-left"></i></button>
+            <button class="next"><i class="fa-solid fa-arrow-right"></i></button>
+        </div>
+    </div>
+    </div>
+</section>
 
-    <footer>
-        <p>&copy; 2024 NEURACORE Technologies. All rights reserved.</p>
-    </footer>
+<footer>
+    <p>&copy; 2024 NEURACORE Technologies. All rights reserved.</p>
+</footer>
+<script>
+let next = document.querySelector('.next')
+let prev = document.querySelector('.prev')
 
-    
+next.addEventListener('click', function(){
+    let items = document.querySelectorAll('.item')
+    document.querySelector('.slide').appendChild(items[0])
+})
+
+prev.addEventListener('click', function(){
+    let items = document.querySelectorAll('.item')
+    document.querySelector('.slide').prepend(items[items.length - 1]) // here the length of items = 6
+})
+setInterval(() => {
+    next.click();
+}, 10000); // Change slide every 5 seconds
+
+</script>
 </body>
 </html>
+
