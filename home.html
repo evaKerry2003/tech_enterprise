@@ -1,476 +1,475 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Document</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>NEURACORE</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            background-color: black;
-            color: white;
-            transition: background-color 0.5s, color 0.5s; /* Smooth transition for theme change */
-        }
-
-        header {
-            background-color:#13042c ;
-            padding: 20px;
-            color: white;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        header h1 {
-            font-size: 32px;
-        }
-
-        nav {
-            display: flex;
-            gap: 20px;
-        }
-
-        a {
-            color: white;
-            text-decoration: none;
-            padding: 10px;
-            font-size: 18px;
-            font-weight: bold;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        
-
-        .container {
-            position: relative;
-            height: 80vh;
-            overflow: hidden;
-            background-color: #111;
-        }
-
-        .slider {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 300%;
-            height: 100%;
-            display: flex;
-            transition: transform 0.5s ease;
-        }
-
-        .slide {
-            flex: 1;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-        }
-
-        
-        .slide video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .nav {
-            position: sticky;
-            top: 0;
-            background-color: #13042c;
-            padding: 10px;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            z-index: 10;
-        }
-        .nav-buttons {
-            position: absolute;
-            top: 50%;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            transform: translateY(-50%);
-            transition: all 0.3s;
-        }
-
-        .nav-buttons button {
-            background-color: rgba(0, 0, 0, 0.5);
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-            font-size: 18px;
-            transition: background-color 0.3s;
-            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
-            border-radius: 5px;
-        }
-
-        .nav-buttons button:hover {
-            background-color: rgba(0, 0, 0, 0.8);
-            transform: translateY(-10px);
-        }
-
-        .nav a {
-            color: white;
-            text-decoration: none;
-            padding: 10px 15px;
-            transition: background-color 0.3s;
-        }
-
-        .nav a.active {
-            background-color: #ff5722;
-            border-radius: 5px;
-        }
-
-        section {
-            padding: 100px 20px;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        #section1 {
-          background-color: #222;
-          background-size: cover;
-          background-position: center;
-          position: relative;
-          color: white;
-          padding-bottom: 50px; /* Add padding at the bottom */
-          margin-bottom: 50px; /* Add margin at the bottom for separation */
-          border-bottom: 5px solid #333; /* Add a dark border to enhance separation */
-        }
-        #section1 h2 {
-          color: white; /* Ensure text is visible */
-          text-align: center;
-          margin-bottom: 20px;
-          max-width: 80%;   
-          position: absolute;
-          top: 5%;      
-        }
-        .autoShow{
-    animation: autoShowAnimation both;
-    animation-timeline: view(70% 5%);
-
+    
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+body{
+    margin: 0;
+    background-color: #000;
+    color: #eee;
+    font-family: Poppins;
+    font-size: 12px;
 }
-@keyframes autoShowAnimation{
-    from{
-        opacity: 0;
-        transform: translateY(200px) scale(0.3);
-    }to{
+a{
+    text-decoration: none;
+}
+header{
+    width: 1140px;
+    max-width: 80%;
+    margin: auto;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 100;
+}
+header a{
+    color: #eee;
+    margin-right: 40px;
+}
+/* carousel */
+.carousel{
+    height: 100vh;
+    margin-top: -50px;
+    width: 100vw;
+    overflow: hidden;
+    position: relative;
+}
+.carousel .list .item{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    inset: 0 0 0 0;
+}
+.carousel .list .item img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.carousel .list .item .content{
+    position: absolute;
+    top: 20%;
+    width: 1140px;
+    max-width: 80%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding-right: 30%;
+    box-sizing: border-box;
+    color: #fff;
+    text-shadow: 0 5px 10px #0004;
+}
+.carousel .list .item .author{
+    font-weight: bold;
+    letter-spacing: 10px;
+}
+.carousel .list .item .title,
+.carousel .list .item .topic{
+    font-size: 5em;
+    font-weight: bold;
+    line-height: 1.3em;
+}
+.carousel .list .item .topic{
+    color: #f1683a;
+}
+.carousel .list .item .buttons{
+    display: grid;
+    grid-template-columns: repeat(2, 130px);
+    grid-template-rows: 40px;
+    gap: 5px;
+    margin-top: 20px;
+}
+.carousel .list .item .buttons button{
+    border: none;
+    background-color: #eee;
+    letter-spacing: 3px;
+    font-family: Poppins;
+    font-weight: 500;
+}
+.carousel .list .item .buttons button:nth-child(2){
+    background-color: transparent;
+    border: 1px solid #fff;
+    color: #eee;
+}
+/* thumbail */
+.thumbnail{
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    width: max-content;
+    z-index: 100;
+    display: flex;
+    gap: 20px;
+}
+.thumbnail .item{
+    width: 150px;
+    height: 220px;
+    flex-shrink: 0;
+    position: relative;
+}
+.thumbnail .item img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+}
+.thumbnail .item .content{
+    color: #fff;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+}
+.thumbnail .item .content .title{
+    font-weight: 500;
+}
+.thumbnail .item .content .description{
+    font-weight: 300;
+}
+/* arrows */
+.arrows{
+    position: absolute;
+    top: 80%;
+    right: 52%;
+    z-index: 100;
+    width: 300px;
+    max-width: 30%;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+.arrows button{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #eee4;
+    border: none;
+    color: #fff;
+    font-family: monospace;
+    font-weight: bold;
+    transition: .5s;
+}
+.arrows button:hover{
+    background-color: #fff;
+    color: #000;
+}
+
+/* animation */
+.carousel .list .item:nth-child(1){
+    z-index: 1;
+}
+
+/* animation text in first item */
+
+.carousel .list .item:nth-child(1) .content .author,
+.carousel .list .item:nth-child(1) .content .title,
+.carousel .list .item:nth-child(1) .content .topic,
+.carousel .list .item:nth-child(1) .content .des,
+.carousel .list .item:nth-child(1) .content .buttons
+{
+    transform: translateY(50px);
+    filter: blur(20px);
+    opacity: 0;
+    animation: showContent .5s 1s linear 1 forwards;
+}
+@keyframes showContent{
+    to{
+        transform: translateY(0px);
+        filter: blur(0px);
         opacity: 1;
-        transform: translateY(0) scale(1);
     }
 }
-        #section1 p{
-          color: white; /* Ensure text is visible */
-          text-align: center;
-          margin-bottom: 20px;
-          max-width: 80%;   
-          position: absolute;
-          top: 10%;
-          font-size: 18px;
-            line-height: 1.6;
-            max-width: 800px;
-            margin: 0 auto;
-            margin-bottom: 30px;
-        }
-        #section2 {
-          background-image: url('https://www.nvidia.com/content/dam/en-zz/Solutions/geforce/ada/rtx-4090/rtx-ai-pc-owned-module-bm-l580-d.jpg');
-          background-size: cover;
-          background-position: center;
-          position: relative;
-          color: white;
-          padding-bottom: 50px; /* Add padding at the bottom */
-          margin-bottom: 50px; /* Add margin at the bottom for separation */
-          border-bottom: 5px solid #333; /* Add a dark border to enhance separation */
-        }
-        
-         #section2 p {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          text-align: center;
-          background: rgba(0, 0, 0, 0.6); /* Dark background to enhance readability */
-          padding: 20px;
-          border-radius: 10px;
-          font-size: 23px;
-        }
-      
-        .Link-btn {
-            margin-top: 160px;
-            
-        }
-
-        .Link-btn a {
-            text-decoration: none;
-            background-color: #2bc417;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-size: 18px;
-            transition: background-color 0.3s;
-            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
-        }
-
-        .Link-btn a:hover {
-            background-color: #1a9e0e;
-        }
-        .Link-btn1 {
-            margin-bottom: 25%; 
-        }
-
-        .Link-btn1 a {
-            text-decoration: none;
-            background-color: #2bc417;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-size: 18px;
-            transition: background-color 0.3s;
-            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
-        }
-
-        .Link-btn1 a:hover {
-            background-color: #1a9e0e;
-        }
-
-        #section3 {
-          background-image: url('https://preview.redd.it/marvels-spider-man-2-spider-man-vs-venom-1920x1080-v0-pkz07bsammwb1.jpg?width=1080&crop=smart&auto=webp&s=f395d3db5aa4526fe583d069e96761441cabedd2');
-          background-size: cover;
-          background-position: center;
-          position: relative;
-          color: white;
-          padding-top: 50px; /* Add padding at the top */
-          padding-bottom: 50px; /* Add padding at the bottom */
-          border-top: 5px solid #333; /* Add a dark border to enhance separation */
-        }
-        #section1, #section2, #section3 {
-          box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
-        }
-        #section3 h2  {
-    color: black; /* Ensure text is visible */
-    text-align: center;
-    margin-bottom: 20px;
-    max-width: 80%;
-    margin: 0 auto; /* Center the text block */
-    position: absolute;
-    top: 1%;
-    font-weight: bolder;
+.carousel .list .item:nth-child(1) .content .title{
+    animation-delay: 1.2s!important;
 }
-#section3 p {
-    color: white; /* Ensure text is visible */
-    text-align: center;
-    margin-bottom: 20px;
-    max-width: 80%;
-    margin: 0 auto; /* Center the text block */
-    position: absolute;
-    top: 4%;
-    font-weight: bold;
-    font-size: 18px;
-            line-height: 1.6;
-            max-width: 800px;
-            margin: 0 auto;
-            margin-bottom: 30px;
+.carousel .list .item:nth-child(1) .content .topic{
+    animation-delay: 1.4s!important;
 }
-        #section1 img {
-            max-width: 100%; /* Ensure image fits within the section */
-            height: auto;
-            margin-top: 20px; /* Add space above the image */
-            
-            
-            
-        }
-        #section3 img {
-    display: block;
-    margin-top: 10%;
-    max-width: 100%; /* Ensure image is responsive */
-    height: auto;
-    left: auto;
-    position: absolute;
-    
+.carousel .list .item:nth-child(1) .content .des{
+    animation-delay: 1.6s!important;
 }
-      
+.carousel .list .item:nth-child(1) .content .buttons{
+    animation-delay: 1.8s!important;
+}
+/* create animation when next click */
+.carousel.next .list .item:nth-child(1) img{
+    width: 150px;
+    height: 220px;
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    border-radius: 30px;
+    animation: showImage .5s linear 1 forwards;
+}
+@keyframes showImage{
+    to{
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+    }
+}
 
-        .content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 10;
-            color: white;
-            text-align: center;
-            background: rgba(0, 0, 0, 0.5);
-            padding: 20px;
-            border-radius: 10px;
-            background: rgba(0, 0, 0, 0.6);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-        }
+.carousel.next .thumbnail .item:nth-last-child(1){
+    overflow: hidden;
+    animation: showThumbnail .5s linear 1 forwards;
+}
+.carousel.prev .list .item img{
+    z-index: 100;
+}
+@keyframes showThumbnail{
+    from{
+        width: 0;
+        opacity: 0;
+    }
+}
+.carousel.next .thumbnail{
+    animation: effectNext .5s linear 1 forwards;
+}
 
-        .content h1 {
-            font-size: 48px;
-            margin-bottom: 20px;
-        }
+@keyframes effectNext{
+    from{
+        transform: translateX(150px);
+    }
+}
 
-        .content p {
-            font-size: 24px;
-            line-height: 1.5;
-        }
+/* running time */
 
-        .content2 {
-            padding: 50px 20px;
-            text-align: center;
-            background-color: #222;
-        }
+.carousel .time{
+    position: absolute;
+    z-index: 1000;
+    width: 0%;
+    height: 3px;
+    background-color: #f1683a;
+    left: 0;
+    top: 0;
+}
 
-        .content2 h2 {
-            font-size: 36px;
-            margin-bottom: 20px;
-            padding: 60px 40px;
-        }
+.carousel.next .time,
+.carousel.prev .time{
+    animation: runningTime 3s linear 1 forwards;
+}
+@keyframes runningTime{
+    from{ width: 100%}
+    to{width: 0}
+}
 
-        .content2 p {
-            font-size: 20px;
-            margin-bottom: 10px;
-        }
 
-        footer {
-            background-color: #1a1a1a;
-            color: #888;
-            padding: 20px;
-            text-align: center;
-            font-size: 14px;
-            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
-            border-top: 1px solid #333;
-        }
+/* prev click */
 
-        @media (max-width: 768px) {
-            .nav-buttons button {
-                padding: 5px 10px;
-                font-size: 16px;
-            }
-        }
-    </style>
-</head>
+.carousel.prev .list .item:nth-child(2){
+    z-index: 2;
+}
 
+.carousel.prev .list .item:nth-child(2) img{
+    animation: outFrame 0.5s linear 1 forwards;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+@keyframes outFrame{
+    to{
+        width: 150px;
+        height: 220px;
+        bottom: 50px;
+        left: 50%;
+        border-radius: 20px;
+    }
+}
+
+.carousel.prev .thumbnail .item:nth-child(1){
+    overflow: hidden;
+    opacity: 0;
+    animation: showThumbnail .5s linear 1 forwards;
+}
+.carousel.next .arrows button,
+.carousel.prev .arrows button{
+    pointer-events: none;
+}
+.carousel.prev .list .item:nth-child(2) .content .author,
+.carousel.prev .list .item:nth-child(2) .content .title,
+.carousel.prev .list .item:nth-child(2) .content .topic,
+.carousel.prev .list .item:nth-child(2) .content .des,
+.carousel.prev .list .item:nth-child(2) .content .buttons
+{
+    animation: contentOut 1.5s linear 1 forwards!important;
+}
+
+@keyframes contentOut{
+    to{
+        transform: translateY(-150px);
+        filter: blur(20px);
+        opacity: 0;
+    }
+}
+@media screen and (max-width: 678px) {
+    .carousel .list .item .content{
+        padding-right: 0;
+    }
+    .carousel .list .item .content .title{
+        font-size: 30px;
+    }
+}
+</style>
 <body>
     <header>
-        <h1>NEURACORE</h1>
         <nav>
             <a href="home.html" onclick="checkLogin(event)">Home</a>
             <a href="product.html" onclick="checkLogin(event)">Product</a>
             <a href="about.html" onclick="checkLogin(event)">About us</a>
             <a href="contact.html" onclick="checkLogin(event)">Contact us</a>
-            <a href="profile.html" onclick="checkLogin(event)"><i class="fa-regular fa-user"></i></a>
-            
+            <a href="profile.html"><i class="fa-regular fa-user"></i></a>
         </nav>
     </header>
 
-    <div class="container">
-        <div class="slider" id="slider">
-            <div class="slide">
-                <video controls>
-                    <source src="https://www.shutterstock.com/shutterstock/videos/1070195062/preview/stock-footage-budapest-hungary-circa-nvidia-geforce-rtx-graphics-card-manufactured-by-evga.webm" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
+    <!-- carousel -->
+    <div class="carousel">
+        <!-- list item -->
+        <div class="list">
+            <div class="item">
+                <img src="https://wallpapers.com/images/featured/4k-graphics-cards-kmfidll2t8r79i5e.jpg" alt="NVIDIA Efficiency Chart">
+                <div class="content">
+                    <div class="author">NEURACORE</div>
+                    <div class="title">Experience the Power of NEURACORE</div>
+                    
+                    <div class="des">
+                        GeForce RTX 40 Series and DLSS 3 transforms laptops through process, design, and technologies. The result is up to a massive two-thirds reduction in power for the same performance. Put another way, 40 Series GPUs along with AI beats the previous generation with just one-third of the power.
+                    </div>
+                    
+                </div>
             </div>
-            <div class="slide">
-                <video controls>
-                    <source src="https://www.shutterstock.com/shutterstock/videos/3445528233/preview/stock-footage-animation-of-the-modern-shooter-video-game-with-bright-graphics-virtual-characters-land-on-the-map.webm" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
+            <div class="item">
+                <img src="https://www.nvidia.com/content/dam/en-zz/Solutions/geforce/ada/rtx-4090/rtx-ai-pc-owned-module-bm-l580-d.jpg">
+                <div class="content">
+                    <div class="author">NEURACORE</div>
+                    <div class="title">AI</div>
+                    <div class="des">
+                        Upgrade to advanced AI with NVIDIA GeForce RTX™ GPUs through our shops and accelerate your gaming, creating, productivity, and development. Thanks to specialized built-in AI processors, you get world-leading AI technology powering your Windows PC.
+                    </div>
+                        <button onclick="location.href='AI.html'">READ MORE</button>
+                </div>
             </div>
-            <div class="slide">
-                <video controls>
-                    <source src="https://www.shutterstock.com/shutterstock/videos/1089956465/preview/stock-footage-gamer-girl-streaming-online-action-game-while-explaining-gameplay-to-subscribers-while-sitting-in.webm" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-            </div>
-        </div>
+            <div class="item">
+                <img src="https://i.redd.it/m451n8buwiy41.png">
+                <div class="content">
+                    <div class="author">NEURACORE</div>
+                    <div class="title">DLSS 3</div>
+                    
+                    <div class="des">
+                        DLSS is a revolutionary breakthrough in AI-powered graphics that massively boosts performance. Powered by the new fourth-gen Tensor Cores and Optical Flow Accelerator on GeForce RTX 40 Series Laptop GPUs, DLSS 3 uses AI to create additional high-quality frames and improve image quality.
+                    </div>
+                    <button onclick="location.href='DLSS 3.html'">READ MORE</button>
 
-        <!-- Navigation buttons -->
-        <div class="nav-buttons">
-            <button id="prevBtn">&lt; Prev</button>
-            <button id="nextBtn">Next &gt;</button>
+                </div>
+            </div>
+          
         </div>
-        <div class="content">
-            <h1>Experience the Power of NEURACORE</h1>
-            <p>Unlock your gaming and creative potential with our cutting-edge laptops, desktops, and high-performance GPUs designed for the most demanding users.</p>
+        <!-- list thumnail -->
+        <div class="thumbnail">
+            <div class="item">
+                <img src="https://www.nvidia.com/content/dam/en-zz/Solutions/geforce/news/geforce-rtx-4060-4060ti/nvidia-geforce-rtx-4060-specifications-comparison.png">
+                <div class="content">
+                    <div class="title">
+                        Performance
+                    </div>
+                    <div class="description">
+                        Description
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img src="https://wallpaperset.com/w/full/9/c/3/24139.jpg">
+                <div class="content">
+                    <div class="title">
+                        AI
+                    </div>
+                    <div class="description">
+                        Description
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img src="https://pbs.twimg.com/media/Fs8B4yAXoAAKQwt?format=jpg&name=4096x4096">
+                <div class="content">
+                    <div class="title">
+                        DLSS 3
+                    </div>
+                    <div class="description">
+                        Description
+                    </div>
+                </div>
+            </div>
+          
         </div>
+        <!-- next prev -->
+
+        <div class="arrows">
+            <button id="prev"></button>
+            <button id="next">></button>
+        </div>
+        <!-- time running -->
+        <div class="time"></div>
     </div>
-    <div class="nav">
-      <a href="#section1" class="active">Performance</a>
-      <a href="#section2">AI</a>
-      <a href="#section3">DLSS 3</a>
-  </div>
-  <section id="section1" class="autoShow">
+<script>
+//step 1: get DOM
+let nextDom = document.getElementById('next');
+let prevDom = document.getElementById('prev');
 
-    <img src="https://www.nvidia.com/content/nvidiaGDC/us/en_US/geforce/laptops/_jcr_content/root/responsivegrid/nv_container_441651100/nv_container/nv_image.coreimg.100.850.png/1719512063044/geforce-rtx-40-series-laptops-efficiency-chart-2560x1440.png" alt="NVIDIA Efficiency Chart">
-    <h2 class="autoShow">Extreme Performance for a Fraction of the Power</h2>
-    <p>GeForce RTX 40 Series and DLSS 3 transforms laptops through process, design, and technologies. The result is up to a massive two-thirds reduction in power for the same performance. Put another way, 40 Series GPUs along with AI beats the previous generation with just one-third of the power.</p>
+let carouselDom = document.querySelector('.carousel');
+let SliderDom = carouselDom.querySelector('.carousel .list');
+let thumbnailBorderDom = document.querySelector('.carousel .thumbnail');
+let thumbnailItemsDom = thumbnailBorderDom.querySelectorAll('.item');
+let timeDom = document.querySelector('.carousel .time');
+
+thumbnailBorderDom.appendChild(thumbnailItemsDom[0]);
+let timeRunning = 3000;
+let timeAutoNext = 7000;
+
+nextDom.onclick = function(){
+    showSlider('next');    
+}
+
+prevDom.onclick = function(){
+    showSlider('prev');    
+}
+let runTimeOut;
+let runNextAuto = setTimeout(() => {
+    next.click();
+}, timeAutoNext)
+function showSlider(type){
+    let  SliderItemsDom = SliderDom.querySelectorAll('.carousel .list .item');
+    let thumbnailItemsDom = document.querySelectorAll('.carousel .thumbnail .item');
     
-</section>
-<section id="section2" class="autoShow">
-    <p>Upgrade to advanced AI with NVIDIA GeForce RTX™ GPUs through our shops and accelerate your gaming, creating, productivity, and development. Thanks to specialized built-in AI processors, you get world-leading AI technology powering your Windows PC.</p>
-    <div class="Link-btn">
-      <a href="AI.html">Read More</a>
-    </div>
-</section>
-<section id="section3" class="autoShow">
-    <h2>Max FPS. Max Quality. Powered by AI</h2>
-    <p>DLSS is a revolutionary breakthrough in AI-powered graphics that massively boosts performance. Powered by the new fourth-gen Tensor Cores and Optical Flow Accelerator on GeForce RTX 40 Series Laptop GPUs, DLSS 3 uses AI to create additional high-quality frames and improve image quality.</p>
-    <img src="https://www.nvidia.com/content/nvidiaGDC/us/en_US/geforce/laptops/_jcr_content/root/responsivegrid/nv_container_copy_72_794552090/nv_image_copy.coreimg.100.850.jpeg/1719512063762/nvidia-dlss-3.jpeg" alt="DLSS 3">
-    <div class="Link-btn1">
-      <a href="DLSS 3.html">Read More</a>
-    </div>
-  </section>
-    <div class="content2 ">
-        <h2>Explore Our PC Range</h2>
-        <p>From budget-friendly options to high-performance powerhouses, we have a pc to suit every need.</p>
-        <p>Discover the latest innovations in pc technology, including AI-enhanced performance and advanced cooling systems.</p>
-        <h3>Find Your Perfect Powerhouse</h3>
-        <p>Browse our collection to find the equipment that best fits your lifestyle and preferences.</p>
-    </div>
-
-    <footer>
-        &copy; 2024 NEURACORE. All rights reserved.
-    </footer>
-
-    <script>
-      let currentIndex = 0;
-const slides = document.querySelectorAll('.slide');
-const slider = document.getElementById('slider');
-const totalSlides = slides.length;
-
-document.getElementById('nextBtn').addEventListener('click', () => {
-    if (currentIndex < totalSlides - 1) {  // Ensure it doesn't exceed the last slide
-        currentIndex++;
-        slider.style.transform = `translateX(-${currentIndex * 33.35}%)`;
+    if(type === 'next'){
+        SliderDom.appendChild(SliderItemsDom[0]);
+        thumbnailBorderDom.appendChild(thumbnailItemsDom[0]);
+        carouselDom.classList.add('next');
+    }else{
+        SliderDom.prepend(SliderItemsDom[SliderItemsDom.length - 1]);
+        thumbnailBorderDom.prepend(thumbnailItemsDom[thumbnailItemsDom.length - 1]);
+        carouselDom.classList.add('prev');
     }
-});
+    clearTimeout(runTimeOut);
+    runTimeOut = setTimeout(() => {
+        carouselDom.classList.remove('next');
+        carouselDom.classList.remove('prev');
+    }, timeRunning);
 
-document.getElementById('prevBtn').addEventListener('click', () => {
-    if (currentIndex > 0) {  // Ensure it doesn't go below the first slide
-        currentIndex--;
-        slider.style.transform = `translateX(-${currentIndex * 33.35}%)`;
-    }
-});
-
-        // Function to check if the user is logged in
-        function checkLogin(event) {
+    clearTimeout(runNextAuto);
+    runNextAuto = setTimeout(() => {
+        next.click();
+    }, timeAutoNext)
+}
+// Function to check if the user is logged in
+function checkLogin(event) {
             const isLoggedIn = sessionStorage.getItem('loggedIn');
 
             // If the user is not logged in, prevent navigation and show alert
@@ -492,34 +491,6 @@ document.getElementById('prevBtn').addEventListener('click', () => {
             sessionStorage.removeItem('loggedIn'); // Remove login status
             alert('Logged out successfully');
         }
-        const navLinks = document.querySelectorAll('.nav a');
-
-        window.addEventListener('scroll', () => {
-            let current = '';
-
-            // Get current scroll position
-            const scrollPosition = document.documentElement.scrollTop;
-
-            // Loop through sections to find the current section
-            document.querySelectorAll('section').forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-
-                if (scrollPosition >= sectionTop - sectionHeight / 3) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            // Highlight the current navigation link
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === '#' + current) {
-                    link.classList.add('active');
-                }
-            });
-          });
-    </script>
+</script>
 </body>
-
 </html>
-
