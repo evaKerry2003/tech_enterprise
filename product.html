@@ -109,20 +109,73 @@ nav button:hover {
     width: 80%; /* Could be more or less, depending on screen size */
 }
 
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
 .close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-    color: black;
-    text-decoration: none;
+    background-color: #333;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    flex: 1;
+    margin-right: 10px; /* Add some space between buttons */
 }
 
+.close:hover {
+    background-color: red;
+}
+
+.checkout {
+    background-color: #333;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    flex: 1;
+}
+
+.checkout a {
+    color: white;
+    text-decoration: none;
+}
+
+.checkout:hover {
+    background-color: green; /* Darker shade on hover */
+}
+
+.quantity-controls {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+        .quantity-controls button {
+            width: 30px;
+            height: 30px;
+            background-color: #FF6B6B;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .quantity-controls input {
+            width: 40px;
+            text-align: center;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin: 0 5px;
+        }
 
         .one,
         .two,
@@ -196,7 +249,8 @@ nav button:hover {
 
         .cart-header {
             padding: 20px;
-            background-color: #333;
+            background-color: grey
+            ;
             color: white;
             text-align: center;
             font-size: 20px;
@@ -226,6 +280,7 @@ nav button:hover {
 .cart-item p {
     font-size: 16px;
 }
+
 
 .cart-footer p {
     font-size: 20px;
@@ -463,7 +518,7 @@ nav button:hover {
   <div class="cart-container" id="cartContainer">
       <div class="cart-header">
           <h2>Your Cart</h2>
-          <span class="close-cart" onclick="toggleCart()">✖</span>
+          
       </div>
       <div class="cart-content" id="cartContent">
           <!-- Cart items will be dynamically added here -->
@@ -471,7 +526,13 @@ nav button:hover {
       <div class="cart-footer">
           <p>Total: <span id="totalPrice">KES 0</span></p>
       </div>
-      <button onclick="placeOrder()">Place Order</button>
+      <div class="buttons">
+        <div class="close" onclick="toggleCart()">CLOSE</div>
+        <div class="checkout">
+            <a href="checkout.html">CHECKOUT</a>
+        </div>
+    </div>
+    
   </div>
   <footer style="background-color: #1E1E1E; color: white; padding: 20px; text-align: center; margin-top: 40px;">
     <p>&copy; 2024 NEURACORE. All rights reserved.</p>
@@ -503,30 +564,60 @@ nav button:hover {
         }
     };
 
-      function addToCart(id, name, price) {
-          // Remove 'KES' and commas, then store the cleaned price
-          const cleanPrice = price.replace('KES', '').replace(/,/g, '').trim();
+    function addToCart(id, name, price) {
+            const existingProductIndex = cart.findIndex(product => product.id === id);
+            const cleanPrice = price.replace('KES', '').replace(/,/g, '').trim();
           const item = { id, name, price: parseFloat(cleanPrice) };
-          cart.push(item);
-          updateCart(cart);
-      }
+          
+            if (existingProductIndex !== -1) {
+                // If product exists, increase quantity
+                cart[existingProductIndex].quantity++;
+            } else {
+                // If product does not exist, add to cart
+                cart.push({ id, name, price, quantity: 1 });
+            }
+            updateCart();
+        }
 
-      function updateCart(cartItems) {
-          cartContent.innerHTML = ''; // Clear the cart display
-          let total = 0; // Initialize total price
+        function updateCart() {
+    cartContent.innerHTML = ''; // Clear the cart content
+    let total = 0; // Initialize total
 
-          cartItems.forEach((item, index) => {
-              cartContent.innerHTML += `
-                  <div class="cart-item">
-                      <p>${item.name} - KES ${item.price.toLocaleString()}</p>
-                      <i class="fa-solid fa-trash remove-item" onclick="removeFromCart(${index})"></i>
-                  </div>`;
-              total += item.price;
-          });
+    cart.forEach(item => {
+        const itemTotal = item.price * item.quantity; // Calculate item total
+        total += itemTotal; // Accumulate total
 
-          cartCount.innerText = cartItems.length; // Update cart count
+        const cartItemDiv = document.createElement('div');
+        cartItemDiv.classList.add('cart-item');
+        cartItemDiv.innerHTML = `
+            <img src="set.jpg" alt="${item.name}">
+            <p>${item.name} - KES ${item.price} x ${item.quantity}</p>
+            <div class="quantity-controls">
+                <button onclick="changeQuantity('${item.id}', -1)">-</button>
+                <input type="text" value="${item.quantity}" readonly>
+                <button onclick="changeQuantity('${item.id}', 1)">+</button>
+            </div>
+            <span class="remove-item" onclick="removeFromCart('${item.id}')">Remove</span>
+        `;
+        cartContent.appendChild(cartItemDiv);
+    });
+
+    // Update total price and cart count
+    cartCount.innerText = cart.length; // Update cart count
           totalPrice.innerText = `KES ${total.toLocaleString()}`; // Format and update total price
       }
+
+
+      function changeQuantity(id, change) {
+            const productIndex = cart.findIndex(product => product.id === id);
+            if (productIndex !== -1) {
+                cart[productIndex].quantity += change;
+                if (cart[productIndex].quantity <= 0) {
+                    cart.splice(productIndex, 1); // Remove item if quantity is zero or less
+                }
+                updateCart();
+            }
+        }
 
       function removeFromCart(index) {
           cart.splice(index, 1); // Remove item from cart array
@@ -555,6 +646,8 @@ function placeOrder() {
         updateCart(cart); // Update cart display
     }
 }
+
+
 
       // Filter functionality
       filter.addEventListener('change', function () {
@@ -622,3 +715,4 @@ function placeOrder() {
       });
   </script>
 </body>
+</html>

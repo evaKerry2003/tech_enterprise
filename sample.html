@@ -101,3 +101,628 @@
     </script>
   </body>
 </html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        body {
+            background-color: rgb(224, 215, 215);
+        }
+        .promo-banner {
+            background-color: #FF6B6B;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            margin-bottom: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        header {
+    background-color: #1E1E1E;
+    padding: 15px 30px;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 30px;
+    letter-spacing: 1.5px;
+    margin: 0;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+}
+
+nav input[type="text"] {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 30px;
+    margin-right: 10px;
+    width: 250px;
+}
+
+nav button {
+    background-color: #FF6B6B;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 30px;
+    color: white;
+    cursor: pointer;
+}
+
+nav button:hover {
+    background-color: #F06595;
+}
+
+.cart-icon i {
+    color: white;
+    font-size: 24px;
+}
+
+
+        a {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .product {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+        .modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+        .one,
+        .two,
+        .three {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 10px 0;
+        }
+
+        img {
+            width: 150px;
+            height: auto;
+        }
+
+        .pics {
+    background-color: #FFFFFF;
+    margin: 20px;
+    padding: 20px;
+    width: 250px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.pics img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.pics p {
+    font-size: 18px;
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+    margin: 5px 0;
+}
+
+.pics button {
+    background-color: #FF6B6B;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.pics button:hover {
+    background-color: #F06595;
+}
+
+
+
+        .cart-container {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 350px;
+            background-color: white;
+            height: 100%;
+            box-shadow: -4px 0 8px rgba(0, 0, 0, 0.2);
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+            z-index: 100;
+            overflow-y: auto;
+        }
+
+        .cart-header {
+            padding: 20px;
+            background-color: #333;
+            color: white;
+            text-align: center;
+            font-size: 20px;
+        }
+
+        .cart-content {
+            padding: 20px;
+        }
+
+        .cart-item {
+            background-color: white;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .cart-item img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+        .cart-item img {
+    border-radius: 50%;
+}
+
+.cart-item p {
+    font-size: 16px;
+}
+
+.cart-footer p {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+}
+
+        .cart-item .remove-item {
+            color: red;
+            cursor: pointer;
+        }
+
+        .cart-icon {
+            font-size: 20px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .cart-icon .cart-count {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background-color: red;
+            color: white;
+            border-radius: 50%;
+            padding: 5px;
+            font-size: 12px;
+        }
+
+        .show-cart {
+            transform: translateX(0);
+        }
+        .place-order-btn {
+    background: linear-gradient(135deg, #ff6b6b, #f06595);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 50px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+}
+
+.place-order-btn:hover {
+    background: linear-gradient(135deg, #f06595, #ff6b6b);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+}
+
+.place-order-btn:before {
+    content: '';
+    position: absolute;
+    width: 300%;
+    height: 300%;
+    top: -100%;
+    left: -100%;
+    background: rgba(255, 255, 255, 0.15);
+    transform: rotate(45deg);
+    transition: all 0.5s ease;
+}
+
+.place-order-btn:hover:before {
+    top: 100%;
+    left: 100%;
+}
+
+.place-order-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+.filter-sort select {
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 30px;
+    border: 1px solid #ddd;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.filter-sort select:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+    </style>
+</head>
+
+<body>
+    <div class="promo-banner">
+        <p>🎉 Special Offer! Get 20% off on your first purchase! Use code FIRST20 🎉</p>
+    </div>
+  <header>
+      <h1>NEURACORE</h1>
+      <nav>
+          <input type="text" id="search" placeholder="Search products...">
+          <button><i class='bx bx-search'></i></button>
+          <a href="home.html">Home</a>
+          <a href="product.html">Product</a>
+          <a href="about.html">About us</a>
+          <a href="contact.html">Contact us</a>
+          <span class="cart-icon" onclick="toggleCart()">
+              <i class="fa-solid fa-cart-shopping"></i>
+              <span class="cart-count">0</span>
+          </span>
+      </nav>
+  </header>
+
+  <div class="filter-sort">
+      <select id="filter">
+          <option value="">All Products</option>
+          <option value="laptops">Laptops</option>
+          <option value="desktops&monitors">Desktops & Monitors</option>
+          <option value="gpus">Graphics Cards</option>
+          <!-- Add more filter options as needed -->
+      </select>
+      <select id="sort">
+          <option value="">Sort By</option>
+          <option value="priceLowToHigh">Price: Low to High</option>
+          <option value="priceHighToLow">Price: High to Low</option>
+      </select>
+  </div>
+
+  <div class="products">
+      <div class="one">
+        <div class="pics" data-category="desktop">
+            <img src="set.jpg" onclick="openModal()">
+            <p>HP Pro Tower 290 G9 Desktop PC,INTEL ...</p>
+            <p>KES 82,000</p>
+            <button style="margin-top: 80px;" onclick="addToCart('set', 'HP Pro Tower 290 G9 Desktop PC,INTEL ...', 'KES 82,000')">Add to cart</button>
+        </div>
+        
+        <!-- Modal Structure -->
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <h2>Customer Ratings</h2>
+                <p>★★★★☆</p> <!-- Example rating -->
+                <h3>Functionalities:</h3>
+                <ul>
+                    <li>16GB RAM</li>
+                    <li>1TB SSD</li>
+                    <li>Intel i5 Processor</li>
+                </ul>
+            </div>
+        </div>
+        
+          <div class="pics" data-category="laptop">
+              <img src="laptop2.webp">
+              <p>Asus X515EA i7-1165G7, 8GB, 512GB SSD, 15.6" FHD,...</p>
+              <p>KES 100,999</p>
+              <button onclick="addToCart('laptop2', 'Asus X515EA', 'KES 100,999')">Add to cart</button>
+          </div>
+          <div class="pics" data-category="laptop">
+              <img src="laptop3.webp">
+              <p>Lenovo LOQ 3Gaming Series i5 8GB 512GB...</p>
+              <p>KES 149,500 <b style="text-decoration: line-through; color: grey">KES 157,500</b></p>
+              <button style="margin-top: 20px;" onclick="addToCart('laptop3', 'Lenovo LOQ 3Gaming Series i5 8GB 512GB...', 'KES 149,500')">Add to Cart</button>
+          </div>
+          <div class="pics" data-category="laptop">
+            <img src="https://p3-ofp.static.pub//fes/cms/2024/09/12/elsxf6rwrtxudesy107rsj88cg0qhx499173.png">
+            <p>Lenovo Pro 5i 16", Gen 9, 16GB DDR5-5600MHz,512GB SSD</p>
+            <p>KES 193,371</p>
+            <button onclick="addToCart('laptop1', 'Lenovo IdeaPad', 'KES 39,000')">Add to cart</button>
+        </div>
+      </div>
+
+      <div class="two">
+          <div class="pics" data-category="desktop">
+              <img src="set.jpg">
+              <p>HP Pro Tower 290 G9 Desktop PC,INTEL ...</p>
+              <p>KES 82,000</p>
+              <button style="margin-top: 80px;" onclick="addToCart('set', 'HP Pro Tower 290 G9 Desktop PC,INTEL ...', 'KES 82,000')">Add to cart</button>
+          </div>
+          <div class="pics" data-category="desktop">
+              <img src="cpu1.jpg">
+              <p>HP ZR22w 21.5-inch S-IPS LCD Monitor</p>
+              <p>KES 5,499</p>
+              <button style="margin-top: 80px;" onclick="addToCart('cpu1', 'HP ZR22w 21.5-inch S-IPS LCD Monitor', 'KES 5,499')">Add to cart</button>
+          </div>
+          <div class="pics" data-category="desktop">
+              <img src="cpu.webp">
+              <p>HP 290 G4 Core i7 Desktop MT 10Th Gen 8GB RAM 1TB HDD</p>
+              <p>KES 88,000</p>
+              <button onclick="addToCart('cpu', 'HP 290 G4 Core i7 Desktop MT 10Th Gen 8GB RAM 1TB HDD', 'KES 88,000')">Add to cart</button>
+          </div>
+          <div class="pics" data-category="desktop">
+            <img src="https://techbuyz.co.ke/wp-content/uploads/2024/04/V009D230302186CPHC7-450x450.jpg">
+            <p>Lenovo Legion Y32p-30 31.5" 4K UHD 31.5" UHD (3840 X 2160)144Hz Monitor -BLACK</p>
+            <p>KES 100,000 EX.VAT</p>
+            <button onclick="addToCart('cpu', 'HP 290 G4 Core i7 Desktop MT 10Th Gen 8GB RAM 1TB HDD', 'KES 88,000')">Add to cart</button>
+        </div>
+      </div>
+
+      <div class="three">
+          <div class="pics" data-category="gpu">
+              <img src="gpu1.jpg">
+              <p>Nvidia Graphics cards</p>
+              <p>Palit GeForce RTX 3070 Ti GamingPro</p>
+              <p>KES 125,000</p>
+              <button onclick="addToCart('gpu1', 'Palit GeForce RTX 3070 Ti GamingPro', 'KES 125,000')">Add to cart</button>
+          </div>
+          <div class="pics" data-category="gpu">
+              <img src="gpu2.jpg">
+              <p>Nvidia Graphics cards</p>
+              <p>Palit GeForce RTX 3060 Ti Dual OC 8GB</p>
+              <p>KES 120,000</p>
+              <button onclick="addToCart('gpu2', 'Palit GeForce RTX 3060 Ti Dual OC 8GB', 'KES 120,000')">Add to cart</button>
+          </div>
+          <div class="pics" data-category="gpu">
+              <img src="gpu3.jpg">
+              <p>Nvidia Graphics cards</p>
+              <p>INNO3D Nvidia GeForce GT210 1GB 64bit DDR3</p>
+              <p>KES 4,000</p>
+              <button onclick="addToCart('gpu3', 'INNO3D Nvidia GeForce GT210 1GB 64bit DDR3', 'KES 4,000')">Add to cart</button>
+          </div>
+          <div class="pics" data-category="gpu">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQC6I5IoPbhPAZmhWm68YBnkWQ4Oo_EZe2rMQ&s">
+            <p>Nvidia Graphics cards</p>
+            <p>NVIDIA GeForce RTX 4090 24GB GDDR6X Graphics Memory, 512 tensor cores, Very well suited for 4K Gaming</p>
+            <p>KES 206,271</p>
+            <button onclick="addToCart('gpu1', 'Palit GeForce RTX 3070 Ti GamingPro', 'KES 125,000')">Add to cart</button>
+        </div>
+      </div>
+  </div>
+
+
+  <div class="cart-container" id="cartContainer">
+      <div class="cart-header">
+          <h2>Your Cart</h2>
+          <span class="close-cart" onclick="toggleCart()">✖</span>
+      </div>
+      <div class="cart-content" id="cartContent">
+          <!-- Cart items will be dynamically added here -->
+      </div>
+      <div class="cart-footer">
+          <p>Total: <span id="totalPrice">KES 0</span></p>
+      </div>
+      <button onclick="placeOrder()">Place Order</button>
+  </div>
+  <footer style="background-color: #1E1E1E; color: white; padding: 20px; text-align: center; margin-top: 40px;">
+    <p>&copy; 2024 NEURACORE. All rights reserved.</p>
+</footer>
+
+
+  <script>
+      let cart = [];
+      const cartCount = document.querySelector('.cart-count');
+      const cartContent = document.getElementById('cartContent');
+      const cartContainer = document.getElementById('cartContainer');
+      const totalPrice = document.getElementById('totalPrice');
+      const searchInput = document.getElementById('search');
+      const filter = document.getElementById('filter');
+      const sort = document.getElementById('sort');
+      function openModal() {
+        document.getElementById("myModal").style.display = "block";
+    }
+
+    function closeModal() {
+        document.getElementById("myModal").style.display = "none";
+    }
+
+    // Close the modal if the user clicks anywhere outside of the modal
+    window.onclick = function(event) {
+        const modal = document.getElementById("myModal");
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+    };
+
+      function addToCart(id, name, price) {
+          // Remove 'KES' and commas, then store the cleaned price
+          const cleanPrice = price.replace('KES', '').replace(/,/g, '').trim();
+          const item = { id, name, price: parseFloat(cleanPrice) };
+          cart.push(item);
+          updateCart(cart);
+      }
+
+      function updateCart(cartItems) {
+          cartContent.innerHTML = ''; // Clear the cart display
+          let total = 0; // Initialize total price
+
+          cartItems.forEach((item, index) => {
+              cartContent.innerHTML += `
+                  <div class="cart-item">
+                      <p>${item.name} - KES ${item.price.toLocaleString()}</p>
+                      <i class="fa-solid fa-trash remove-item" onclick="removeFromCart(${index})"></i>
+                  </div>`;
+              total += item.price;
+          });
+
+          cartCount.innerText = cartItems.length; // Update cart count
+          totalPrice.innerText = `KES ${total.toLocaleString()}`; // Format and update total price
+      }
+
+      function removeFromCart(index) {
+          cart.splice(index, 1); // Remove item from cart array
+          updateCart(cart); // Update cart display
+      }
+
+      function toggleCart() {
+          cartContainer.classList.toggle('show-cart');
+      }
+      // New Place Order function
+function placeOrder() {
+    if (cart.length === 0) {
+        alert("Your cart is empty!");
+        return;
+    }
+
+    const orderDetails = cart.map(item => `${item.name} - KES ${item.price.toLocaleString()}`).join('\n');
+    const totalPrice = cart.reduce((acc, item) => acc + item.price, 0);
+
+    const confirmation = confirm(`You are placing the following order:\n\n${orderDetails}\n\nTotal: KES ${totalPrice.toLocaleString()}\n\nDo you want to proceed?`);
+
+    if (confirmation) {
+        // Here you can send the cart data to a server or handle the order
+        alert("Order placed successfully!");
+        cart = []; // Clear cart after placing the order
+        updateCart(cart); // Update cart display
+    }
+}
+
+      // Filter functionality
+      filter.addEventListener('change', function () {
+          const value = this.value;
+          const products = document.querySelectorAll('.pics');
+          products.forEach(product => {
+              if (value === "" || product.getAttribute('data-category') === value) {
+                  product.style.display = "block"; // Show product
+              } else {
+                  product.style.display = "none"; // Hide product
+              }
+          });
+      });
+
+      // Sort functionality
+      sort.addEventListener('change', function () {
+          const value = this.value;
+          const productsArray = Array.from(document.querySelectorAll('.pics'));
+          if (value === 'priceLowToHigh') {
+              productsArray.sort((a, b) => {
+                  const priceA = parseFloat(a.querySelector('p:nth-of-type(2)').innerText.replace('KES', '').replace(/,/g, '').trim());
+                  const priceB = parseFloat(b.querySelector('p:nth-of-type(2)').innerText.replace('KES', '').replace(/,/g, '').trim());
+                  return priceA - priceB; // Ascending order
+              });
+          } else if (value === 'priceHighToLow') {
+              productsArray.sort((a, b) => {
+                  const priceA = parseFloat(a.querySelector('p:nth-of-type(2)').innerText.replace('KES', '').replace(/,/g, '').trim());
+                  const priceB = parseFloat(b.querySelector('p:nth-of-type(2)').innerText.replace('KES', '').replace(/,/g, '').trim());
+                  return priceB - priceA; // Descending order
+              });
+          }
+          // Reattach sorted products to the DOM
+          const productContainer = document.querySelector('.products');
+          productContainer.innerHTML = ''; // Clear current products
+          productsArray.forEach(product => productContainer.appendChild(product)); // Append sorted products
+      });
+ // Rotation effect based on mouse movement
+ const products = document.querySelectorAll('.pics img');
+        products.forEach(product => {
+            product.addEventListener('mousemove', (e) => {
+                const width = product.offsetWidth;
+                const height = product.offsetHeight;
+                const xAxis = (width / 50 - e.offsetX) / 15;
+                const yAxis = (height / 50 - e.offsetY) / 15;
+                product.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+            });
+
+            product.addEventListener('mouseleave', () => {
+                product.style.transform = 'rotateY(0) rotateX(0)';
+            });
+        });
+      // Search functionality
+      searchInput.addEventListener('input', function () {
+          const searchTerm = this.value.toLowerCase();
+          const products = document.querySelectorAll('.pics');
+          products.forEach(product => {
+              const productName = product.querySelector('p:nth-of-type(1)').innerText.toLowerCase();
+              if (productName.includes(searchTerm)) {
+                  product.style.display = "block"; // Show product if it matches the search term
+              } else {
+                  product.style.display = "none"; // Hide product if it doesn't match
+              }
+          });
+          
+      });
+  </script>
+</body>
+</html>
